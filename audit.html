@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Request an Audit — Norrœna Solutions</title>
+<meta name="description" content="Request a Multi-State HR Compliance & Process Audit — a fixed-fee diagnostic engagement that delivers a written findings report and roadmap." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="assets/norroena.css">
+
+<style>
+  /* ----------------------------------------------------------------
+     AUDIT PAGE — page-specific
+     A two-column layout: form left, "what happens next" right.
+     Form styling is editorial — thin underline fields, mono labels,
+     no rounded corners, no default browser chrome.
+     ---------------------------------------------------------------- */
+
+  /* The two-column intake layout */
+  section.intake {
+    padding: clamp(3rem, 6vw, 5rem) var(--gutter) clamp(5rem, 10vw, 8rem);
+  }
+  .intake-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: clamp(3rem, 6vw, 6rem);
+    align-items: start;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* ============== THE FORM ============== */
+  .audit-form {
+    /* Form is its own composition; no card wrapper */
+  }
+  .form-section {
+    margin-bottom: 3.5rem;
+  }
+  .form-section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 1.75rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(15,17,21,0.12);
+  }
+  .form-section-num {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: 1.65rem;
+    color: var(--bronze);
+    line-height: 1;
+  }
+  .form-section-title {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 1.35rem;
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+  }
+  .form-section-note {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--bronze);
+    margin-left: auto;
+  }
+
+  /* Field rows */
+  .field {
+    margin-bottom: 1.75rem;
+  }
+  .field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 0;
+  }
+  .field-row .field { margin-bottom: 1.75rem; }
+
+  .field label {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--bronze-deep);
+    margin-bottom: 0.6rem;
+  }
+  .field label .required {
+    color: var(--rune-red);
+    margin-left: 0.25rem;
+  }
+  .field label .hint {
+    text-transform: none;
+    letter-spacing: 0.05em;
+    font-size: 0.72rem;
+    color: var(--ink-soft);
+    font-weight: normal;
+    margin-left: 0.5rem;
+    opacity: 0.7;
+  }
+
+  /* The underline-only input style */
+  .field input[type="text"],
+  .field input[type="email"],
+  .field input[type="tel"],
+  .field input[type="number"],
+  .field select,
+  .field textarea {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(15,17,21,0.25);
+    padding: 0.5rem 0;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--ink);
+    transition: border-color 0.2s;
+  }
+  .field input:focus,
+  .field select:focus,
+  .field textarea:focus {
+    outline: none;
+    border-color: var(--bronze);
+  }
+  .field input::placeholder,
+  .field textarea::placeholder {
+    color: rgba(15,17,21,0.35);
+    font-style: italic;
+  }
+  .field textarea {
+    resize: vertical;
+    min-height: 100px;
+    line-height: 1.6;
+  }
+  .field select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' stroke='%238B6F3F' stroke-width='1.5' fill='none'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 0.25rem center;
+    padding-right: 1.5rem;
+    cursor: pointer;
+  }
+
+  /* Checkbox groups — designed as ornamental */
+  .check-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.4rem 1.5rem;
+  }
+  .check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.6rem 0;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(15,17,21,0.06);
+    transition: border-color 0.2s;
+  }
+  .check-item:hover { border-bottom-color: var(--bronze); }
+  .check-item input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    border: 1px solid var(--bronze);
+    background: transparent;
+    cursor: pointer;
+    position: relative;
+    flex-shrink: 0;
+    margin-top: 3px;
+    transition: background 0.2s;
+  }
+  .check-item input[type="checkbox"]:checked {
+    background: var(--ink);
+    border-color: var(--ink);
+  }
+  .check-item input[type="checkbox"]:checked::after {
+    content: '✓';
+    color: var(--bronze);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -55%);
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .check-item .check-label {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--ink);
+  }
+  .check-item .check-label small {
+    display: block;
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+    margin-top: 0.15rem;
+    font-style: italic;
+  }
+
+  /* Radio pills — for ranges (employee count, timing) */
+  .radio-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .radio-pill {
+    position: relative;
+  }
+  .radio-pill input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .radio-pill label {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink);
+    background: transparent;
+    border: 1px solid rgba(15,17,21,0.25);
+    padding: 0.6rem 1rem;
+    cursor: pointer;
+    margin: 0;
+    transition: all 0.2s;
+  }
+  .radio-pill:hover label {
+    border-color: var(--bronze);
+    color: var(--bronze-deep);
+  }
+  .radio-pill input[type="radio"]:checked + label {
+    background: var(--ink);
+    color: var(--parchment);
+    border-color: var(--ink);
+  }
+
+  /* Submit block */
+  .form-submit-block {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--bronze);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .form-submit-note {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+    max-width: 38ch;
+    line-height: 1.5;
+  }
+
+  /* ============== THE SIDEBAR ============== */
+  .sidebar {
+    position: sticky;
+    top: 2rem;
+  }
+  .sidecar {
+    background: var(--ink);
+    color: var(--parchment);
+    padding: 2.5rem;
+    position: relative;
+  }
+  .sidecar::before {
+    content: '';
+    position: absolute;
+    top: -10px; left: -10px;
+    right: 10px; bottom: 10px;
+    border: 1px solid var(--bronze);
+    z-index: -1;
+    pointer-events: none;
+  }
+  .sidecar .seal {
+    position: absolute;
+    top: -16px; right: -16px;
+    width: 64px; height: 64px;
+    background: var(--rune-red);
+    color: var(--parchment);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: 0.7rem;
+    text-align: center;
+    line-height: 1.1;
+    transform: rotate(-8deg);
+    box-shadow: 0 4px 12px rgba(140,45,45,0.25);
+    z-index: 1;
+  }
+  .sidecar .offer-label {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--bronze);
+    margin-bottom: 1rem;
+  }
+  .sidecar .offer-name {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: 1.65rem;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin-bottom: 1.25rem;
+  }
+  .sidecar .offer-price {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    color: var(--bronze);
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(139,111,63,0.3);
+  }
+
+  /* What-happens-next list */
+  .next-steps {
+    list-style: none;
+    counter-reset: step;
+  }
+  .next-steps li {
+    counter-increment: step;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(139,111,63,0.15);
+    display: grid;
+    grid-template-columns: 32px 1fr;
+    gap: 1rem;
+  }
+  .next-steps li::before {
+    content: counter(step);
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--bronze);
+    letter-spacing: 0.1em;
+    padding-top: 2px;
+  }
+  .next-steps li:last-child { border-bottom: none; }
+  .next-steps .step-title {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 1.05rem;
+    margin-bottom: 0.25rem;
+  }
+  .next-steps .step-desc {
+    font-size: 0.88rem;
+    line-height: 1.55;
+    color: rgba(242,235,221,0.7);
+  }
+
+  .sidebar-aside {
+    margin-top: 1.5rem;
+    padding: 1.25rem 1.5rem;
+    background: var(--parchment);
+    border-left: 2px solid var(--bronze);
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+  .sidebar-aside strong {
+    font-style: normal;
+    color: var(--ink);
+  }
+
+  @media (max-width: 900px) {
+    .intake-grid { grid-template-columns: 1fr; }
+    .sidebar { position: static; }
+    .field-row { grid-template-columns: 1fr; }
+    .check-grid { grid-template-columns: 1fr; }
+    .form-submit-block { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wordmark">
+    <a href="index.html">Norrœna<span class="sub">Solutions</span></a>
+  </div>
+  <nav class="primary">
+    <a href="practice.html">Practice</a>
+    <a href="case-studies.html">Case studies</a>
+    <a href="founder.html">Founder</a>
+    <a href="contact.html">Contact</a>
+    <a href="audit.html" class="cta" aria-current="page">Begin with an audit</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- Page hero -->
+  <section class="page-hero">
+    <div class="eyebrow reveal d1">Request an audit</div>
+    <h1 class="reveal d2">Begin with the <em>diagnostic.</em></h1>
+    <p class="deck reveal d3">
+      A fixed-fee Multi-State HR Compliance &amp; Process Audit is how every
+      Norrœna relationship begins. Tell us about your situation below —
+      the more specific you can be, the better-shaped the conversation that follows.
+    </p>
+  </section>
+
+  <!-- Intake form + sidecar -->
+  <section class="intake">
+    <div class="intake-grid">
+
+      <!-- ============== THE FORM ============== -->
+      <form class="audit-form scroll-reveal" onsubmit="event.preventDefault(); document.getElementById('thankyou').style.display='block'; this.style.display='none'; window.scrollTo({top:0,behavior:'smooth'});">
+
+        <!-- §I — You & the firm -->
+        <div class="form-section">
+          <div class="form-section-header">
+            <span class="form-section-num">§ I</span>
+            <span class="form-section-title">You &amp; the firm</span>
+            <span class="form-section-note">Required</span>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="name">Your name <span class="required">*</span></label>
+              <input type="text" id="name" name="name" required placeholder="First and last">
+            </div>
+            <div class="field">
+              <label for="role">Your role <span class="hint">— what hat are you wearing?</span></label>
+              <input type="text" id="role" name="role" placeholder="HR Director, Founder, COO…">
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="company">Company name <span class="required">*</span></label>
+              <input type="text" id="company" name="company" required placeholder="Legal or operating name">
+            </div>
+            <div class="field">
+              <label for="industry">Industry <span class="hint">— optional</span></label>
+              <input type="text" id="industry" name="industry" placeholder="Professional services, manufacturing…">
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="email">Email <span class="required">*</span></label>
+              <input type="email" id="email" name="email" required placeholder="you@company.com">
+            </div>
+            <div class="field">
+              <label for="phone">Phone <span class="hint">— optional</span></label>
+              <input type="tel" id="phone" name="phone" placeholder="(801) 555-0000">
+            </div>
+          </div>
+        </div>
+
+        <!-- §II — Footprint -->
+        <div class="form-section">
+          <div class="form-section-header">
+            <span class="form-section-num">§ II</span>
+            <span class="form-section-title">Your footprint</span>
+            <span class="form-section-note">The shape of your operation</span>
+          </div>
+
+          <div class="field">
+            <label>Approximate employee count <span class="required">*</span></label>
+            <div class="radio-row">
+              <div class="radio-pill">
+                <input type="radio" id="size-1" name="size" value="<20" required>
+                <label for="size-1">Under 20</label>
+              </div>
+              <div class="radio-pill">
+                <input type="radio" id="size-2" name="size" value="20-50">
+                <label for="size-2">20 — 50</label>
+              </div>
+              <div class="radio-pill">
+                <input type="radio" id="size-3" name="size" value="50-100">
+                <label for="size-3">50 — 100</label>
+              </div>
+              <div class="radio-pill">
+                <input type="radio" id="size-4" name="size" value="100-250">
+                <label for="size-4">100 — 250</label>
+              </div>
+              <div class="radio-pill">
+                <input type="radio" id="size-5" name="size" value="250+">
+                <label for="size-5">250+</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="states">States you operate in <span class="hint">— how many, and which ones if you know</span></label>
+            <input type="text" id="states" name="states" placeholder="e.g. 12 states — UT, CA, NY, WA, TX, FL…">
+          </div>
+
+          <div class="field">
+            <label>Workforce model</label>
+            <div class="radio-row">
+              <div class="radio-pill">
+                <input type="radio" id="model-1" name="model" value="onsite">
+                <label for="model-1">Onsite</label>
+              </div>
+              <div class="radio-pill">
+                <input type="radio" id="model-2" name="model" value="hybrid">
+                <label for="model-2">Hybrid</label>
+              </div>
+              <div class="radio-pill">
+                <input type="radio" id="model-3" name="model" value="remote">
+                <label for="model-3">Fully remote</label>
+              </div>
+              <div class="radio-pill">
+                <input type="radio" id="model-4" name="model" value="mixed">
+                <label for="model-4">Mixed by team</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- §III — Pain points -->
+        <div class="form-section">
+          <div class="form-section-header">
+            <span class="form-section-num">§ III</span>
+            <span class="form-section-title">Where is the pain?</span>
+            <span class="form-section-note">Select any that apply</span>
+          </div>
+
+          <div class="field">
+            <label>The work that's currently <em>too manual</em>, <em>too risky</em>, or <em>too slow</em>:</label>
+            <div class="check-grid">
+              <label class="check-item">
+                <input type="checkbox" name="pain" value="multi-state-compliance">
+                <span class="check-label">
+                  Multi-state compliance
+                  <small>Postings, accruals, state-specific rules</small>
+                </span>
+              </label>
+              <label class="check-item">
+                <input type="checkbox" name="pain" value="onboarding">
+                <span class="check-label">
+                  Onboarding &amp; offboarding
+                  <small>Workflows, document flow, system access</small>
+                </span>
+              </label>
+              <label class="check-item">
+                <input type="checkbox" name="pain" value="payroll-prep">
+                <span class="check-label">
+                  Payroll prep &amp; reconciliation
+                  <small>Spreadsheet-driven, error-prone</small>
+                </span>
+              </label>
+              <label class="check-item">
+                <input type="checkbox" name="pain" value="reporting">
+                <span class="check-label">
+                  Reporting nobody can build
+                  <small>Recurring asks that take hours each time</small>
+                </span>
+              </label>
+              <label class="check-item">
+                <input type="checkbox" name="pain" value="benefits-admin">
+                <span class="check-label">
+                  Benefits administration
+                  <small>Enrollment, eligibility, employee Q&amp;A</small>
+                </span>
+              </label>
+              <label class="check-item">
+                <input type="checkbox" name="pain" value="leave-tracking">
+                <span class="check-label">
+                  Leave &amp; time-off tracking
+                  <small>Accruals, state rules, balance reconciliation</small>
+                </span>
+              </label>
+              <label class="check-item">
+                <input type="checkbox" name="pain" value="integrations">
+                <span class="check-label">
+                  Systems that don't talk
+                  <small>Manual data movement between tools</small>
+                </span>
+              </label>
+              <label class="check-item">
+                <input type="checkbox" name="pain" value="ai-assistant">
+                <span class="check-label">
+                  Recurring questions to HR
+                  <small>Same Q&amp;A every cycle — Mímir territory</small>
+                </span>
+              </label>
+              <label class="check-item">
+                <input type="checkbox" name="pain" value="documents">
+                <span class="check-label">
+                  Document preparation
+                  <small>Offer letters, notices, state-specific addenda</small>
+                </span>
+              </label>
+              <label class="check-item">
+                <input type="checkbox" name="pain" value="not-sure">
+                <span class="check-label">
+                  We're not sure yet
+                  <small>That's an honest answer — we'll help find out</small>
+                </span>
+              </label>
+            </div>
+          </div>
+
+          <div class="field" style="margin-top: 2rem;">
+            <label for="story">Briefly — what brought you here? <span class="hint">— the more specific, the better the first conversation</span></label>
+            <textarea id="story" name="story" rows="5" placeholder="A few sentences about what's currently broken, what you've already tried, and what you'd want a successful engagement to look like."></textarea>
+          </div>
+        </div>
+
+        <!-- §IV — Timing & how to reach you -->
+        <div class="form-section">
+          <div class="form-section-header">
+            <span class="form-section-num">§ IV</span>
+            <span class="form-section-title">Timing</span>
+            <span class="form-section-note">When would you like to start?</span>
+          </div>
+
+          <div class="field">
+            <label>Preferred timing for the audit:</label>
+            <div class="radio-row">
+              <div class="radio-pill">
+                <input type="radio" id="timing-1" name="timing" value="asap">
+                <label for="timing-1">As soon as possible</label>
+              </div>
+              <div class="radio-pill">
+                <input type="radio" id="timing-2" name="timing" value="month">
+                <label for="timing-2">Within a month</label>
+              </div>
+              <div class="radio-pill">
+                <input type="radio" id="timing-3" name="timing" value="quarter">
+                <label for="timing-3">Within the quarter</label>
+              </div>
+              <div class="radio-pill">
+                <input type="radio" id="timing-4" name="timing" value="exploring">
+                <label for="timing-4">Just exploring</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="referral">How did you find us? <span class="hint">— optional, but helpful</span></label>
+            <input type="text" id="referral" name="referral" placeholder="Referral, search, LinkedIn, an article…">
+          </div>
+        </div>
+
+        <!-- Submit -->
+        <div class="form-submit-block">
+          <p class="form-submit-note">
+            We'll respond personally within one business day to schedule
+            a thirty-minute scoping call. No bot. No drip sequence.
+          </p>
+          <button type="submit" class="btn-primary">
+            Submit request <span class="arr">→</span>
+          </button>
+        </div>
+      </form>
+
+      <!-- Hidden confirmation panel -->
+      <div id="thankyou" style="display:none; padding: 3rem; background: var(--parchment); border: 1px solid var(--bronze); text-align: center;">
+        <div class="section-label" style="justify-content: center;">Request received</div>
+        <h2 class="display-md" style="margin-bottom: 1.5rem;">Thank you — <em>we'll be in touch.</em></h2>
+        <p style="font-size: 1.05rem; line-height: 1.7; color: var(--ink-soft); max-width: 50ch; margin: 0 auto;">
+          Michael will respond personally within one business day to schedule
+          a thirty-minute scoping call. In the meantime, you're welcome to
+          read the longer founder story or explore the rest of the practice.
+        </p>
+        <div style="margin-top: 2.5rem; display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
+          <a href="founder.html" class="btn-secondary">Read the founder story →</a>
+          <a href="practice.html" class="btn-secondary">Explore the practice →</a>
+        </div>
+      </div>
+
+      <!-- ============== THE SIDECAR ============== -->
+      <aside class="sidebar">
+        <div class="sidecar scroll-reveal">
+          <div class="seal">Wedge<br>offer</div>
+          <div class="offer-label">Lead engagement</div>
+          <h3 class="offer-name">Multi-State HR Compliance &amp; Process Audit</h3>
+          <div class="offer-price">$3,000 — $4,500 · fixed fee</div>
+
+          <div style="font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--bronze); margin-bottom: 1rem;">
+            What happens next
+          </div>
+          <ol class="next-steps">
+            <li>
+              <div>
+                <div class="step-title">Personal reply within one business day</div>
+                <div class="step-desc">No automated sequence. You'll hear from Michael directly.</div>
+              </div>
+            </li>
+            <li>
+              <div>
+                <div class="step-title">A thirty-minute scoping call</div>
+                <div class="step-desc">Free, no commitment. We agree on what's in and out of scope.</div>
+              </div>
+            </li>
+            <li>
+              <div>
+                <div class="step-title">Written engagement letter</div>
+                <div class="step-desc">Fixed fee, defined deliverables, defined timeline.</div>
+              </div>
+            </li>
+            <li>
+              <div>
+                <div class="step-title">Two to three weeks of focused work</div>
+                <div class="step-desc">Structured review, structured findings, structured roadmap.</div>
+              </div>
+            </li>
+            <li>
+              <div>
+                <div class="step-title">Written report &amp; walkthrough</div>
+                <div class="step-desc">Yours to keep. If you continue, the fee credits forward.</div>
+              </div>
+            </li>
+          </ol>
+        </div>
+
+        <div class="sidebar-aside scroll-reveal">
+          <strong>A note on confidentiality.</strong> Every conversation
+          before, during, and after an audit is treated as confidential
+          by default. A mutual NDA is available on request — but you
+          don't need one to ask the first question.
+        </div>
+      </aside>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="footer-top">
+    <div class="footer-mark">
+      <div class="name">Norrœna Solutions</div>
+      <div class="tag">— the bridge between people and process —</div>
+    </div>
+    <div class="footer-links">
+      <a href="practice.html">Practice</a>
+      <a href="case-studies.html">Case studies</a>
+      <a href="founder.html">Founder</a>
+      <a href="audit.html">Audit</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Norrœna Solutions, LLC · Highland, Utah</span>
+    <span>ᛒ ᛞ ᛗ ᚱ</span>
+  </div>
+</footer>
+
+<script src="assets/norroena.js"></script>
+</body>
+</html>

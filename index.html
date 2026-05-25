@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Norrœna Solutions — The bridge between people and process</title>
+<meta name="description" content="Custom HR technology, automation, and AI built by a practitioner who understands both the compliance requirement and the code." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="assets/norroena.css">
+
+<style>
+  /* Homepage-specific styles only — shared system lives in norroena.css */
+
+  section.hero {
+    padding: clamp(4rem, 10vw, 8rem) var(--gutter) clamp(3rem, 7vw, 6rem);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2rem, 5vw, 5rem);
+    align-items: end;
+    min-height: 80vh;
+    position: relative;
+  }
+  .hero-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--bronze);
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    width: 32px; height: 1px;
+    background: var(--bronze);
+  }
+  .hero-deck { margin-top: 2.5rem; max-width: 36ch; }
+
+  .hero-manifesto {
+    border-left: 1px solid var(--bronze);
+    padding-left: clamp(1.5rem, 3vw, 2.5rem);
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(1.15rem, 1.4vw, 1.4rem);
+    line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: 42ch;
+  }
+  .hero-manifesto .marker {
+    font-family: var(--font-mono);
+    font-style: normal;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--bronze);
+    display: block;
+    margin-bottom: 1rem;
+  }
+  .hero-manifesto p + p { margin-top: 1.25rem; }
+  .hero-manifesto .sig {
+    font-family: var(--font-mono);
+    font-style: normal;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--bronze-deep);
+    margin-top: 2rem;
+    display: block;
+  }
+
+  .hero-cta-row {
+    margin-top: 3rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .hero-ornament {
+    position: absolute;
+    right: -8%;
+    top: 10%;
+    width: 45%;
+    max-width: 600px;
+    opacity: 0.07;
+    pointer-events: none;
+  }
+
+  /* Problem */
+  section.problem {
+    padding: clamp(5rem, 10vw, 8rem) var(--gutter);
+    border-top: 1px solid rgba(15,17,21,0.08);
+    background: var(--parchment-deep);
+  }
+  .problem-stack {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2rem, 6vw, 6rem);
+    align-items: start;
+  }
+  .problem-statement {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+    line-height: 1.25;
+    letter-spacing: -0.015em;
+  }
+  .problem-statement .strike {
+    text-decoration: line-through;
+    text-decoration-color: var(--bronze);
+    text-decoration-thickness: 2px;
+    color: var(--ink-soft);
+  }
+  .problem-statement em { font-style: italic; color: var(--bronze-deep); }
+  .problem-detail {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--ink-soft);
+    max-width: 48ch;
+  }
+  .problem-detail p + p { margin-top: 1.25rem; }
+
+  /* Pillars */
+  section.pillars {
+    padding: clamp(5rem, 10vw, 8rem) var(--gutter);
+    border-top: 1px solid rgba(15,17,21,0.08);
+  }
+  .pillars-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin-bottom: 4rem;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+  .pillar {
+    background: var(--ink);
+    color: var(--parchment);
+    padding: 2.5rem 1.75rem;
+    min-height: 420px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.35s cubic-bezier(.2,.7,.2,1), background 0.35s;
+  }
+  .pillar:hover { transform: translateY(-6px); background: var(--ink-soft); }
+  .pillar .glyph {
+    position: absolute;
+    right: -10px; bottom: -20px;
+    font-size: 14rem;
+    line-height: 1;
+    font-family: 'Fraunces', serif;
+    color: var(--bronze);
+    opacity: 0.12;
+    pointer-events: none;
+    user-select: none;
+    transition: opacity 0.35s, transform 0.5s cubic-bezier(.2,.7,.2,1);
+  }
+  .pillar:hover .glyph { opacity: 0.22; transform: rotate(-8deg) translateY(-10px); }
+  .pillar-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--bronze);
+    margin-bottom: 0.5rem;
+  }
+  .pillar-name {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: 1.85rem;
+    letter-spacing: -0.01em;
+    line-height: 1.05;
+    margin-bottom: 0.75rem;
+  }
+  .pillar-rune {
+    font-family: 'Fraunces', serif;
+    font-size: 1.1rem;
+    color: var(--bronze);
+    letter-spacing: 0.2em;
+    margin-bottom: 1.5rem;
+  }
+  .pillar-desc {
+    font-size: 0.92rem;
+    line-height: 1.55;
+    color: rgba(242,235,221,0.78);
+    margin-bottom: 1.5rem;
+  }
+  .pillar-link {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--bronze);
+    border-top: 1px solid rgba(139,111,63,0.3);
+    padding-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .pillar:hover .pillar-link { color: var(--parchment); }
+
+  /* Craft */
+  section.craft {
+    padding: clamp(6rem, 12vw, 10rem) var(--gutter);
+    border-top: 1px solid rgba(15,17,21,0.08);
+    background: var(--ink);
+    color: var(--parchment);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .craft-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--bronze);
+    margin-bottom: 2rem;
+  }
+  .craft-headline {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: clamp(2.25rem, 5.5vw, 4.5rem);
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    max-width: 18ch;
+    margin: 0 auto;
+  }
+  .craft-headline em { font-style: italic; color: var(--bronze); }
+  .craft-detail {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: 1.2rem;
+    line-height: 1.55;
+    max-width: 52ch;
+    margin: 2.5rem auto 0;
+    color: rgba(242,235,221,0.8);
+  }
+  .craft-runes {
+    margin-top: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    color: var(--bronze);
+    opacity: 0.65;
+    user-select: none;
+  }
+  .craft-runes::before,
+  .craft-runes::after {
+    content: '';
+    flex: 0 1 80px;
+    height: 1px;
+    background: var(--bronze);
+    opacity: 0.4;
+  }
+  .craft-runes .runes {
+    font-family: 'Fraunces', serif;
+    font-size: 1.5rem;
+    letter-spacing: 0.7em;
+    padding-left: 0.7em;
+    white-space: nowrap;
+  }
+
+  /* Founder */
+  section.founder {
+    padding: clamp(5rem, 10vw, 8rem) var(--gutter);
+    border-top: 1px solid rgba(15,17,21,0.08);
+  }
+  .founder-grid {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: clamp(2rem, 5vw, 5rem);
+    align-items: start;
+  }
+  .founder-card {
+    background: var(--ink);
+    color: var(--parchment);
+    padding: 2.5rem;
+    position: relative;
+  }
+  .founder-card::before {
+    content: '';
+    position: absolute;
+    top: -10px; left: -10px;
+    right: 10px; bottom: 10px;
+    border: 1px solid var(--bronze);
+    z-index: -1;
+    pointer-events: none;
+  }
+  .founder-card .role {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--bronze);
+    margin-bottom: 1rem;
+  }
+  .founder-card .name {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: 2.2rem;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+  }
+  .founder-card .creds {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: rgba(242,235,221,0.7);
+    margin-bottom: 2rem;
+    letter-spacing: 0.05em;
+  }
+  .founder-card .quals {
+    list-style: none;
+    border-top: 1px solid rgba(139,111,63,0.4);
+    padding-top: 1.5rem;
+  }
+  .founder-card .quals li {
+    display: flex;
+    gap: 1rem;
+    padding: 0.6rem 0;
+    font-size: 0.92rem;
+    color: rgba(242,235,221,0.85);
+    border-bottom: 1px solid rgba(139,111,63,0.15);
+  }
+  .founder-card .quals li::before {
+    content: '※';
+    color: var(--bronze);
+    font-family: var(--font-display);
+  }
+  .founder-story h3 {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+  }
+  .founder-story h3 em { font-style: italic; color: var(--bronze-deep); }
+  .founder-story p {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--ink-soft);
+    max-width: 56ch;
+  }
+  .founder-story p + p { margin-top: 1.25rem; }
+  .founder-pullquote {
+    margin-top: 2.5rem;
+    padding: 1.5rem 0 1.5rem 1.75rem;
+    border-left: 2px solid var(--bronze);
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.25rem;
+    line-height: 1.4;
+    color: var(--bronze-deep);
+    max-width: 50ch;
+  }
+
+  /* Closer */
+  section.closer {
+    padding: clamp(5rem, 10vw, 8rem) var(--gutter);
+    border-top: 1px solid rgba(15,17,21,0.08);
+    background: var(--parchment-deep);
+  }
+  .closer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2rem, 5vw, 5rem);
+    align-items: center;
+  }
+  .closer-body {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--ink-soft);
+    max-width: 48ch;
+    margin-top: 2rem;
+  }
+  .closer-body p + p { margin-top: 1.25rem; }
+  .closer-card {
+    background: var(--parchment);
+    border: 1px solid var(--bronze);
+    padding: 2.5rem;
+    position: relative;
+  }
+  .closer-card .seal {
+    position: absolute;
+    top: -16px; right: -16px;
+    width: 64px; height: 64px;
+    background: var(--rune-red);
+    color: var(--parchment);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: 0.7rem;
+    text-align: center;
+    line-height: 1.1;
+    transform: rotate(-8deg);
+    box-shadow: 0 4px 12px rgba(140,45,45,0.25);
+  }
+  .closer-card .offer-label {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--bronze-deep);
+    margin-bottom: 1rem;
+  }
+  .closer-card .offer-name {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: 1.65rem;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin-bottom: 1.25rem;
+  }
+  .closer-card .offer-details {
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+    margin-bottom: 1.75rem;
+    line-height: 1.6;
+  }
+  .closer-card .offer-includes {
+    list-style: none;
+    margin-bottom: 2rem;
+    border-top: 1px solid rgba(15,17,21,0.1);
+    padding-top: 1.25rem;
+  }
+  .closer-card .offer-includes li {
+    font-size: 0.9rem;
+    padding: 0.5rem 0;
+    color: var(--ink-soft);
+    display: flex;
+    gap: 0.75rem;
+  }
+  .closer-card .offer-includes li::before {
+    content: '+';
+    color: var(--bronze);
+    font-family: var(--font-mono);
+    font-weight: 500;
+  }
+
+  @media (max-width: 900px) {
+    section.hero { grid-template-columns: 1fr; }
+    .problem-stack { grid-template-columns: 1fr; }
+    .pillars-grid { grid-template-columns: repeat(2, 1fr); }
+    .founder-grid { grid-template-columns: 1fr; }
+    .closer-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 540px) {
+    .pillars-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wordmark">
+    <a href="index.html">Norrœna<span class="sub">Solutions</span></a>
+  </div>
+  <nav class="primary">
+    <a href="practice.html">Practice</a>
+    <a href="case-studies.html">Case studies</a>
+    <a href="founder.html">Founder</a>
+    <a href="contact.html">Contact</a>
+    <a href="audit.html" class="cta">Begin with an audit</a>
+  </nav>
+</header>
+
+<main>
+
+  <section class="hero">
+    <svg class="hero-ornament" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <linearGradient id="arc" x1="0" x2="1" y1="0" y2="0">
+          <stop offset="0"   stop-color="#8B6F3F"/>
+          <stop offset="0.5" stop-color="#3B5363"/>
+          <stop offset="1"   stop-color="#8C2D2D"/>
+        </linearGradient>
+      </defs>
+      <g fill="none" stroke="url(#arc)" stroke-width="1.2">
+        <path d="M 50 500 Q 300 -50 550 500" />
+        <path d="M 80 500 Q 300 0 520 500" />
+        <path d="M 110 500 Q 300 50 490 500" />
+        <path d="M 140 500 Q 300 100 460 500" />
+        <path d="M 170 500 Q 300 150 430 500" />
+      </g>
+    </svg>
+
+    <div>
+      <div class="hero-eyebrow reveal d1">A bridge between people and process</div>
+      <h1 class="display-xl reveal d2">
+        Software built<br>for the work<br>you actually <em>do.</em>
+      </h1>
+      <p class="deck hero-deck reveal d3">
+        Custom HR technology, automation, and AI — engineered by a practitioner
+        who understands both the compliance requirement and the code.
+      </p>
+      <div class="hero-cta-row reveal d4">
+        <a href="audit.html" class="btn-primary">Start with an audit <span class="arr">→</span></a>
+        <a href="practice.html" class="btn-secondary">See the practice</a>
+      </div>
+    </div>
+
+    <aside class="hero-manifesto reveal d3">
+      <span class="marker">— A note from the founder</span>
+      <p>
+        HR professionals were never meant to spend their week
+        cleaning data, chasing approvals, and assembling reports by hand.
+      </p>
+      <p>Let them do what they do best. Leave us the rest.</p>
+      <span class="sig">Michael Knudson · Ph.D., PHR</span>
+    </aside>
+  </section>
+
+  <section class="problem scroll-reveal">
+    <div class="section-label">The problem</div>
+    <div class="problem-stack">
+      <h2 class="problem-statement">
+        Your team is spending its talent on
+        <span class="strike">work that software should be doing</span> —
+        and paying for tools that <em>don't fit how they actually work.</em>
+      </h2>
+      <div class="problem-detail">
+        <p>
+          Off-the-shelf platforms are the cheapest line item in a people-operations
+          budget, and the most expensive in practice. They make a company bend its
+          processes to match the software, not the other way around.
+        </p>
+        <p>
+          What's left over — the multi-state edge cases, the report nobody can build,
+          the workflow held together by a spreadsheet and a calendar reminder — falls
+          back onto the people who can least afford the time.
+        </p>
+        <p>We build the system that closes that gap.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="pillars scroll-reveal" id="pillars">
+    <div class="pillars-header">
+      <div>
+        <div class="section-label">The practice</div>
+        <h2 class="display-lg">Four ways we <em>bridge</em><br>the gap.</h2>
+      </div>
+      <p class="deck" style="max-width: 42ch;">
+        From a single workflow to a full HR suite —
+        each engagement is sharply scoped, fixed-priced where scope is knowable,
+        and built to compound: every deployment makes the next one faster.
+      </p>
+    </div>
+
+    <div class="pillars-grid">
+      <a href="practice.html#bifrost" class="pillar">
+        <div>
+          <div class="pillar-eyebrow">01 · Platforms</div>
+          <h3 class="pillar-name">Bifröst</h3>
+          <div class="pillar-rune">ᛒᛁᚠᚱᛟᛋᛏ</div>
+          <p class="pillar-desc">
+            A full HR information &amp; management suite — deployed whole
+            or modularly — and configured to your processes,
+            not the other way around.
+          </p>
+        </div>
+        <div class="pillar-link">Explore Bifröst <span>→</span></div>
+        <span class="glyph" aria-hidden="true">ᛒ</span>
+      </a>
+
+      <a href="practice.html#draupnir" class="pillar">
+        <div>
+          <div class="pillar-eyebrow">02 · Processes</div>
+          <h3 class="pillar-name">Draupnir</h3>
+          <div class="pillar-rune">ᛞᚱᚨᚢᛈᚾᛁᚱ</div>
+          <p class="pillar-desc">
+            Targeted automations, custom reporting suites,
+            and integrations — modular builds forged once, and engineered
+            so each one makes the next one faster.
+          </p>
+        </div>
+        <div class="pillar-link">Explore Draupnir <span>→</span></div>
+        <span class="glyph" aria-hidden="true">ᛞ</span>
+      </a>
+
+      <a href="practice.html#mimir" class="pillar">
+        <div>
+          <div class="pillar-eyebrow">03 · Assistants</div>
+          <h3 class="pillar-name">Mímir</h3>
+          <div class="pillar-rune">ᛗᛁᛗᛁᚱ</div>
+          <p class="pillar-desc">
+            AI assistants built on — and drawing strictly from —
+            your own documentation. Knowledge Q&amp;A and document preparation,
+            scoped to a corpus you control.
+          </p>
+        </div>
+        <div class="pillar-link">Explore Mímir <span>→</span></div>
+        <span class="glyph" aria-hidden="true">ᛗ</span>
+      </a>
+
+      <a href="practice.html#run" class="pillar">
+        <div>
+          <div class="pillar-eyebrow">04 · Counsel</div>
+          <h3 class="pillar-name">Rún</h3>
+          <div class="pillar-rune">ᚱᚢᚾ</div>
+          <p class="pillar-desc">
+            Audits and advisory — multi-state compliance reviews,
+            technology readiness assessments, and bottleneck diagnostics
+            delivered as a fixed-fee written report.
+          </p>
+        </div>
+        <div class="pillar-link">Explore Rún <span>→</span></div>
+        <span class="glyph" aria-hidden="true">ᚱ</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="craft scroll-reveal" id="craft">
+    <div class="craft-eyebrow">Our discipline</div>
+    <h2 class="craft-headline">Custom is the <em>core</em><br>of what we do.</h2>
+    <p class="craft-detail">
+      Your processes deserve a solution shaped to them — not assembled
+      from a feature checklist and hoped to fit. The platform is our engine.
+      Your business is the architecture it serves.
+    </p>
+    <div class="craft-runes" aria-hidden="true"><span class="runes">ᛒ ᛞ ᛗ ᚱ</span></div>
+  </section>
+
+  <section class="founder scroll-reveal" id="founder">
+    <div class="section-label" style="margin-bottom: 3rem;">Why listen to us</div>
+    <div class="founder-grid">
+      <aside class="founder-card">
+        <div class="role">Founder &amp; principal</div>
+        <div class="name">Michael Knudson</div>
+        <div class="creds">Ph.D. · PHR · Full-Stack Developer</div>
+        <ul class="quals">
+          <li>Sole HR specialist for a ~350-employee fully-remote firm</li>
+          <li>Direct ownership of payroll, benefits, &amp; compliance across 31+ states</li>
+          <li>Architect &amp; engineer of the Bifröst platform</li>
+          <li>Highland, Utah</li>
+        </ul>
+      </aside>
+
+      <div class="founder-story">
+        <h3>I've been the person at the bottom of the <em>bottleneck.</em></h3>
+        <p>
+          I've felt those frustrations — hours of time wasted feeding spreadsheets,
+          chasing approvals through email threads, and watching the work
+          I trained for get pushed aside by work a script could have done in seconds.
+        </p>
+        <p>
+          I built Bifröst because I needed it. Because I knew the multi-state nuances
+          that off-the-shelf tools missed, and I knew the code to close that gap.
+          Norrœna exists to bring that same combination to other teams who have
+          outgrown manual processes — but can't justify enterprise platforms
+          or a full engineering bench.
+        </p>
+        <blockquote class="founder-pullquote">
+          Reclaim your time. Let your team's talent shine.
+        </blockquote>
+        <p style="margin-top: 2rem;">
+          <a href="founder.html" class="btn-secondary">Read the longer story →</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="closer scroll-reveal" id="audit">
+    <div class="closer-grid">
+      <div>
+        <div class="section-label">The first step</div>
+        <h2 class="display-lg">Start with the <em>audit.</em></h2>
+        <div class="closer-body">
+          <p>
+            Every relationship begins with a fixed-fee Multi-State HR
+            Compliance &amp; Process Audit. Low risk for you,
+            no commitment beyond it.
+          </p>
+          <p>
+            You receive a written findings report and a walkthrough —
+            an honest map of where your time is being lost, where compliance
+            exposure is hiding, and what to build first.
+          </p>
+          <p>
+            If you decide to keep going from there,
+            the audit fee credits toward what comes next.
+          </p>
+        </div>
+      </div>
+
+      <aside class="closer-card">
+        <div class="seal">Wedge<br>offer</div>
+        <div class="offer-label">Lead engagement</div>
+        <h3 class="offer-name">Multi-State HR<br>Compliance &amp; Process Audit</h3>
+        <p class="offer-details">
+          A focused review of your people-operations workflows
+          across the states you operate in, delivered as a written
+          findings report and walkthrough.
+        </p>
+        <ul class="offer-includes">
+          <li>Workflow &amp; tooling assessment</li>
+          <li>Multi-state compliance exposure mapping</li>
+          <li>Prioritized findings — severity, effort, sequence</li>
+          <li>Roadmap to candidate builds &amp; remediations</li>
+          <li>Audit fee credits toward follow-on engagement</li>
+        </ul>
+        <a href="audit.html" class="btn-primary" style="width: 100%; justify-content: center;">
+          Request an audit <span class="arr">→</span>
+        </a>
+      </aside>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="footer-top">
+    <div class="footer-mark">
+      <div class="name">Norrœna Solutions</div>
+      <div class="tag">— the bridge between people and process —</div>
+    </div>
+    <div class="footer-links">
+      <a href="practice.html">Practice</a>
+      <a href="case-studies.html">Case studies</a>
+      <a href="founder.html">Founder</a>
+      <a href="audit.html">Audit</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Norrœna Solutions, LLC · Highland, Utah</span>
+    <span>ᛒ ᛞ ᛗ ᚱ</span>
+  </div>
+</footer>
+
+<script src="assets/norroena.js"></script>
+</body>
+</html>

@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Founder — Norrœna Solutions</title>
+<meta name="description" content="Michael Knudson — Ph.D., PHR, Full-Stack Developer. Founder of Norrœna Solutions. The story of a practitioner who built the system he needed." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="assets/norroena.css">
+
+<style>
+  /* ----------------------------------------------------------------
+     FOUNDER PAGE — page-specific
+     Layout is intentionally longform-essay-like:
+     a wide intro spread, then a narrowed reading column,
+     with periodic pull-quotes, image plates, and section breaks.
+     ---------------------------------------------------------------- */
+
+  /* Reading column — narrow for comfortable reading */
+  .essay {
+    max-width: 64ch;
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+  }
+
+  .essay p {
+    font-size: 1.075rem;
+    line-height: 1.85;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+  }
+  /* Drop cap — the first letter of the first paragraph */
+  .essay > p.lede::first-letter {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: 5rem;
+    line-height: 0.85;
+    float: left;
+    padding: 0.45rem 0.75rem 0 0;
+    color: var(--bronze-deep);
+  }
+
+  /* Section breaks — runic ornament dividers
+     Built as a flex row with hairlines on either side, so it
+     adapts to any container width without breaking apart. */
+  .essay-break {
+    margin: 4rem auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    color: var(--bronze);
+    opacity: 0.7;
+  }
+  .essay-break::before,
+  .essay-break::after {
+    content: '';
+    flex: 0 1 60px;
+    height: 1px;
+    background: var(--bronze);
+    opacity: 0.5;
+  }
+  .essay-break .runes {
+    font-family: 'Fraunces', serif;
+    font-size: 1.25rem;
+    letter-spacing: 0.6em;
+    /* Trim the trailing letter-spacing on the right edge so the
+       group reads as centered rather than visually offset. */
+    padding-left: 0.6em;
+    white-space: nowrap;
+  }
+
+  /* Section headings inside the essay */
+  .essay h2 {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin: 3.5rem 0 1.5rem;
+    max-width: 22ch;
+  }
+  .essay h2 em { font-style: italic; color: var(--bronze-deep); }
+  .essay h2 .num {
+    display: block;
+    font-family: var(--font-mono);
+    font-style: normal;
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    color: var(--bronze);
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  /* Pull-quotes — the editorial accent */
+  .essay-pullquote {
+    margin: 3rem 0;
+    padding: 1.5rem 2rem;
+    border-top: 1px solid var(--bronze);
+    border-bottom: 1px solid var(--bronze);
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(1.5rem, 2.4vw, 2rem);
+    line-height: 1.35;
+    color: var(--bronze-deep);
+    text-align: center;
+  }
+  .essay-pullquote .marker {
+    display: block;
+    font-family: var(--font-mono);
+    font-style: normal;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--bronze);
+    margin-bottom: 1rem;
+  }
+
+  /* Aside / margin-note */
+  .essay-aside {
+    background: var(--parchment-deep);
+    border-left: 2px solid var(--bronze);
+    padding: 1.5rem 1.75rem;
+    margin: 2.5rem 0;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--ink-soft);
+  }
+  .essay-aside .label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--bronze);
+    margin-bottom: 0.5rem;
+  }
+  .essay-aside p { margin-bottom: 0.75rem; font-size: inherit; line-height: inherit; }
+  .essay-aside p:last-child { margin-bottom: 0; }
+
+  /* Credentials plate — sits below the hero */
+  .credentials-plate {
+    background: var(--ink);
+    color: var(--parchment);
+    padding: clamp(3rem, 6vw, 5rem) var(--gutter);
+    margin-top: 0;
+  }
+  .credentials-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 1.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .cred-card {
+    border-left: 1px solid var(--bronze);
+    padding: 0.5rem 0 0.5rem 1.5rem;
+  }
+  .cred-card .label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--bronze);
+    margin-bottom: 0.5rem;
+  }
+  .cred-card .value {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: 1.4rem;
+    line-height: 1.15;
+    margin-bottom: 0.5rem;
+  }
+  .cred-card .note {
+    font-size: 0.85rem;
+    color: rgba(242,235,221,0.65);
+    line-height: 1.55;
+  }
+
+  /* Closing CTA */
+  section.closer-min {
+    padding: clamp(5rem, 8vw, 7rem) var(--gutter);
+    border-top: 1px solid rgba(15,17,21,0.08);
+    background: var(--parchment-deep);
+    text-align: center;
+    margin-top: 4rem;
+  }
+  section.closer-min .display-lg { margin: 0 auto 2rem; max-width: 24ch; }
+  section.closer-min .deck { margin: 0 auto 2.5rem; max-width: 52ch; }
+  section.closer-min .cta-row {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* Signature ornament under the essay */
+  .signature-block {
+    margin: 5rem auto 0;
+    text-align: center;
+  }
+  .signature-block .sig-mark {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 300;
+    font-size: 2.5rem;
+    color: var(--bronze-deep);
+    letter-spacing: -0.01em;
+    line-height: 1;
+  }
+  .signature-block .sig-detail {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--bronze);
+    margin-top: 1rem;
+  }
+
+  @media (max-width: 900px) {
+    .credentials-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 540px) {
+    .credentials-grid { grid-template-columns: 1fr; }
+    .essay-pullquote { padding: 1.25rem 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wordmark">
+    <a href="index.html">Norrœna<span class="sub">Solutions</span></a>
+  </div>
+  <nav class="primary">
+    <a href="practice.html">Practice</a>
+    <a href="case-studies.html">Case studies</a>
+    <a href="founder.html" aria-current="page">Founder</a>
+    <a href="contact.html">Contact</a>
+    <a href="audit.html" class="cta">Begin with an audit</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- Page hero -->
+  <section class="page-hero">
+    <div class="eyebrow reveal d1">The founder</div>
+    <h1 class="reveal d2">Michael Knudson —<br><em>practitioner, engineer.</em></h1>
+    <p class="deck reveal d3">
+      An HR generalist with a PHR, a Ph.D., and a full-stack development
+      certification — and the firsthand experience of being the only HR
+      specialist for a 350-person, fully-remote workforce across more than
+      thirty states. The hybrid is the point.
+    </p>
+  </section>
+
+  <!-- Credentials plate -->
+  <section class="credentials-plate">
+    <div class="credentials-grid">
+      <div class="cred-card">
+        <div class="label">Education</div>
+        <div class="value">Ph.D.</div>
+        <div class="note">Years of structured research, writing, and analytical discipline.</div>
+      </div>
+      <div class="cred-card">
+        <div class="label">HR credential</div>
+        <div class="value">PHR</div>
+        <div class="note">Professional in Human Resources — HRCI certification.</div>
+      </div>
+      <div class="cred-card">
+        <div class="label">Technical credential</div>
+        <div class="value">Full-Stack Developer</div>
+        <div class="note">Certified — and shipped to production at meaningful scale.</div>
+      </div>
+      <div class="cred-card">
+        <div class="label">Domain</div>
+        <div class="value">31+ states</div>
+        <div class="note">Multi-state, fully-remote compliance, lived day-to-day.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The longform essay -->
+  <article class="essay scroll-reveal" style="padding-top: 5rem;">
+
+    <p class="lede">
+      The hardest week of my career as an HR generalist was the one I spent
+      reconciling state-by-state leave accruals by hand because no system I
+      had access to could do it correctly. By the end of the week the work was
+      done, the numbers were right, and I had not had a single moment to think
+      about the harder, more interesting problems I was actually hired to solve.
+      That week is, in a way, the reason Norrœna exists.
+    </p>
+
+    <p>
+      I came into HR through an unusual door. I have a Ph.D., which gave me
+      years of training in reading carefully, writing clearly, and trusting
+      structured thought over impulse. I earned a PHR certification because
+      the field rewards rigor, and rigor is the part of the work I most enjoy.
+      And along the way I picked up a full-stack development certification —
+      not as a hobby, but because I had been watching the same problem repeat
+      itself everywhere I worked: HR teams asked to do increasingly technical
+      work with tools that were not built for them, by vendors who had never
+      sat in their chair.
+    </p>
+
+    <p>
+      I served as the sole HR specialist for a third-party administrator with
+      roughly 350 employees, fully remote, distributed across more than thirty
+      states. Compensation, benefits, payroll prep, multi-state compliance,
+      onboarding, separations — the full surface area of people-operations,
+      with no team beneath me and a tool stack that had been chosen for a
+      smaller, simpler company. The compliance work was the most exposed —
+      I was responsible for keeping the firm right with the law in every
+      state we touched — and the work that no off-the-shelf platform was
+      designed to handle gracefully.
+    </p>
+
+    <div class="essay-break"><span class="runes">ᛒ ᛞ ᛗ ᚱ</span></div>
+
+    <h2><span class="num">§ I</span>Why I built <em>Bifröst</em>.</h2>
+
+    <p>
+      I built Bifröst — the platform that now sits at the center of Norrœna's
+      practice — because I needed it. Not as a side project, not as a startup
+      idea, but as a working solution to a working problem. The off-the-shelf
+      tools available to a company at our scale solved roughly seventy percent
+      of the work. The remaining thirty percent — the multi-state accrual
+      logic, the report nobody could pull, the integration that should have
+      existed but didn't — was eating my week.
+    </p>
+
+    <p>
+      What I had that most engineers don't was the lived experience of being
+      the person at the bottom of the bottleneck. I didn't have to interpret
+      a requirements document. I was the requirement. Every design decision
+      in Bifröst came out of a question I had asked myself, in the middle of
+      a busy week, while the work waited.
+    </p>
+
+    <div class="essay-pullquote">
+      <span class="marker">A working belief</span>
+      Most developers who build HR tools don't understand HR.
+      Most HR consultants can't build production software.
+      The intersection is where the real work hides — and where
+      almost nobody is competing.
+    </div>
+
+    <p>
+      That intersection is what Norrœna sells. Not the platform — although
+      the platform is what makes the economics work. Not the credentials —
+      although the credentials are what make the work defensible. What we
+      sell is the judgment of an HR practitioner with the hands of an
+      engineer. The judgment to know what to automate, what to leave human,
+      and what to refuse on principle. The hands to build the thing the
+      judgment recommends.
+    </p>
+
+    <div class="essay-break"><span class="runes">ᛒ ᛞ ᛗ ᚱ</span></div>
+
+    <h2><span class="num">§ II</span>Why <em>Norrœna</em>.</h2>
+
+    <p>
+      The name comes from the Old Norse term for the language of the North —
+      the tongue that connected far-flung settlements that otherwise had no
+      common ground. It was the bridge across distance, the medium of trade
+      and law and counsel. I chose it because that bridging function is
+      exactly what the firm does: between HR and engineering, between
+      compliance and automation, between the people who do the work and the
+      systems that should be helping them.
+    </p>
+
+    <p>
+      Bifröst — the rainbow bridge in the same mythology — is the platform.
+      Mímir — the wise counselor whose well held the world's knowledge — is
+      the assistant. Draupnir — Odin's ring, the artifact that dripped
+      eight identical rings every ninth night — is the modular tier:
+      each engagement forged once, designed so the next one comes faster.
+      Rún is the quiet word, the whispered counsel, the audit. The names
+      are not decoration. They are a promise that the firm thinks carefully
+      about every piece of what it builds and what it calls things.
+    </p>
+
+    <div class="essay-aside">
+      <div class="label">A practical note</div>
+      <p>
+        Norrœna operates publicly as "Norroena" wherever the œ ligature
+        causes trouble — domains, email, search. The stylized wordmark
+        is preserved for logos and letterhead. The pronunciation is
+        roughly nor-roy-nah, with the stress on the first syllable.
+      </p>
+    </div>
+
+    <h2><span class="num">§ III</span>How I work.</h2>
+
+    <p>
+      Three working principles shape every Norrœna engagement, and they're
+      worth stating plainly so you know what to expect:
+    </p>
+
+    <p>
+      <strong>I sell outcomes, not hours.</strong> If a build that should
+      take three weeks of an unprepared developer's time takes me three
+      days because the platform is reusable, the price is the same. You're
+      not paying for the clock. You're paying for the solved problem.
+      Hourly billing punishes speed; outcome pricing rewards it. The
+      arithmetic works in your favor either way.
+    </p>
+
+    <p>
+      <strong>Every fixed-fee deliverable has written acceptance criteria.</strong>
+      I learned the hard way — both as an HR practitioner watching scope
+      creep destroy projects, and as an engineer watching the same thing
+      happen — that "we'll figure it out as we go" is the most expensive
+      sentence in any engagement. Every deliverable I sell has explicit
+      done-conditions, written down before work begins. This protects both
+      of us.
+    </p>
+
+    <p>
+      <strong>Compliance review is part of delivery, not an afterthought.</strong>
+      Any work that touches multi-state employment law is reviewed against
+      current rules before handoff. I will not give legal advice — that's
+      what your attorney is for — but I will not ship a system that I
+      haven't checked against the rules I know it has to live inside.
+    </p>
+
+    <div class="essay-break"><span class="runes">ᛒ ᛞ ᛗ ᚱ</span></div>
+
+    <h2><span class="num">§ IV</span>What I'm <em>building toward</em>.</h2>
+
+    <p>
+      Norrœna is, today, a solo practice. That's a deliberate choice, not
+      a phase. The economics of a solo expertise-driven firm — with a
+      proprietary platform that makes delivery fast — beat the economics
+      of a growing agency for a long time, and they beat them more cleanly
+      the more compounding the platform produces. Each engagement makes
+      the next faster to deliver. That's operating leverage achieved
+      without headcount, and it's the core reason I can compete
+      profitably against venture-funded HR software vendors without
+      trying to beat them at their own game.
+    </p>
+
+    <p>
+      Over time, the practice will grow — but slowly, by referral, on terms
+      that protect the quality. Contractors for overflow before employees
+      for capacity. Recurring revenue covering payroll through a slow
+      quarter before any hire becomes defensible. The pace is set by the
+      work, not by an ambition to scale.
+    </p>
+
+    <p>
+      What I'm building toward is a small, high-trust practice that small
+      and mid-sized organizations turn to when their processes have outgrown
+      manual workflows but do not justify enterprise platforms or a full
+      engineering bench. A bridge between where they are and where they
+      need to be. That's the whole idea. The name is the brief.
+    </p>
+
+    <div class="essay-pullquote">
+      <span class="marker">A closing thought</span>
+      I built the system I needed. Now I'd like to build yours.
+    </div>
+
+    <div class="signature-block">
+      <div class="sig-mark">— M. Knudson</div>
+      <div class="sig-detail">Highland, Utah · Founder &amp; Principal</div>
+    </div>
+
+  </article>
+
+  <!-- Closer -->
+  <section class="closer-min">
+    <div class="section-label" style="justify-content: center;">If this sounds like the right fit</div>
+    <h2 class="display-lg">Let's start with a <em>conversation.</em></h2>
+    <p class="deck">
+      Most engagements begin with an audit, but every audit begins with
+      a thirty-minute scoping call — yours, no commitment, no pressure.
+    </p>
+    <div class="cta-row">
+      <a href="audit.html" class="btn-primary">Request an audit <span class="arr">→</span></a>
+      <a href="contact.html" class="btn-secondary">Send a message instead</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="footer-top">
+    <div class="footer-mark">
+      <div class="name">Norrœna Solutions</div>
+      <div class="tag">— the bridge between people and process —</div>
+    </div>
+    <div class="footer-links">
+      <a href="practice.html">Practice</a>
+      <a href="case-studies.html">Case studies</a>
+      <a href="founder.html">Founder</a>
+      <a href="audit.html">Audit</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Norrœna Solutions, LLC · Highland, Utah</span>
+    <span>ᛒ ᛞ ᛗ ᚱ</span>
+  </div>
+</footer>
+
+<script src="assets/norroena.js"></script>
+</body>
+</html>

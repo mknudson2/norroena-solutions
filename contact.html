@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Contact — Norrœna Solutions</title>
+<meta name="description" content="Get in touch with Norrœna Solutions. Questions, referrals, partnerships, or just a hello — every message gets a personal reply." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="assets/norroena.css">
+
+<style>
+  /* ----------------------------------------------------------------
+     CONTACT PAGE — page-specific
+     A two-column split: a thoughtful "directory" on the left
+     (who we are, where we are, what to expect), and a short
+     message form on the right. Lighter than the audit form.
+     ---------------------------------------------------------------- */
+
+  section.contact {
+    padding: clamp(3rem, 6vw, 5rem) var(--gutter) clamp(5rem, 10vw, 8rem);
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: clamp(3rem, 6vw, 6rem);
+    align-items: start;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* ============== LEFT — THE DIRECTORY ============== */
+  .directory h2 {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: clamp(2rem, 3.5vw, 2.75rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+  }
+  .directory h2 em { font-style: italic; color: var(--bronze-deep); }
+  .directory .intro {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--ink-soft);
+    margin-bottom: 3rem;
+    max-width: 50ch;
+  }
+
+  /* Directory items — a list of "use this path for X" rows */
+  .directory-list {
+    border-top: 1px solid rgba(15,17,21,0.15);
+    margin-bottom: 3rem;
+  }
+  .directory-item {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 2rem;
+    padding: 1.75rem 0;
+    border-bottom: 1px solid rgba(15,17,21,0.12);
+    align-items: baseline;
+  }
+  .directory-item .label {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--bronze);
+  }
+  .directory-item .value {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: 1.2rem;
+    line-height: 1.4;
+    color: var(--ink);
+  }
+  .directory-item .value a {
+    border-bottom: 1px solid rgba(139,111,63,0.4);
+    padding-bottom: 1px;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .directory-item .value a:hover {
+    border-color: var(--bronze);
+    color: var(--bronze-deep);
+  }
+  .directory-item .value small {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+    margin-top: 0.4rem;
+    line-height: 1.6;
+  }
+
+  /* The pull-quote / closing thought */
+  .directory-pullquote {
+    margin-top: 3rem;
+    padding: 1.75rem 0 1.75rem 1.75rem;
+    border-left: 2px solid var(--bronze);
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 300;
+    font-size: 1.2rem;
+    line-height: 1.5;
+    color: var(--bronze-deep);
+    max-width: 48ch;
+  }
+  .directory-pullquote .marker {
+    display: block;
+    font-family: var(--font-mono);
+    font-style: normal;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--bronze);
+    margin-bottom: 0.75rem;
+  }
+
+  /* ============== RIGHT — THE MESSAGE FORM ============== */
+  .message-card {
+    background: var(--parchment);
+    border: 1px solid rgba(15,17,21,0.12);
+    padding: clamp(2rem, 4vw, 3rem);
+    position: relative;
+    position: sticky;
+    top: 2rem;
+  }
+  .message-card .card-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--bronze);
+    margin-bottom: 1rem;
+  }
+  .message-card h3 {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: clamp(1.65rem, 2.5vw, 2.1rem);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.75rem;
+  }
+  .message-card h3 em { font-style: italic; color: var(--bronze-deep); }
+  .message-card .card-note {
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    margin-bottom: 2rem;
+    max-width: 42ch;
+  }
+
+  /* Form fields — same underline-only style as audit page */
+  .message-card .field {
+    margin-bottom: 1.5rem;
+  }
+  .message-card .field label {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--bronze-deep);
+    margin-bottom: 0.5rem;
+  }
+  .message-card .field label .required {
+    color: var(--rune-red);
+    margin-left: 0.25rem;
+  }
+  .message-card .field input,
+  .message-card .field textarea,
+  .message-card .field select {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(15,17,21,0.25);
+    padding: 0.5rem 0;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--ink);
+    transition: border-color 0.2s;
+  }
+  .message-card .field input:focus,
+  .message-card .field textarea:focus,
+  .message-card .field select:focus {
+    outline: none;
+    border-color: var(--bronze);
+  }
+  .message-card .field textarea {
+    resize: vertical;
+    min-height: 140px;
+    line-height: 1.6;
+  }
+  .message-card .field select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' stroke='%238B6F3F' stroke-width='1.5' fill='none'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 0.25rem center;
+    padding-right: 1.5rem;
+    cursor: pointer;
+  }
+  .message-card .field input::placeholder,
+  .message-card .field textarea::placeholder {
+    color: rgba(15,17,21,0.35);
+    font-style: italic;
+  }
+
+  .message-submit {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--bronze);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .message-submit-note {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+    max-width: 26ch;
+    line-height: 1.5;
+  }
+
+  /* Confirmation panel */
+  .message-thanks {
+    display: none;
+    background: var(--parchment);
+    border: 1px solid var(--bronze);
+    padding: 3rem;
+    text-align: center;
+  }
+  .message-thanks .section-label { justify-content: center; }
+  .message-thanks h3 {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: 1.85rem;
+    line-height: 1.15;
+    margin-bottom: 1.25rem;
+  }
+  .message-thanks h3 em { font-style: italic; color: var(--bronze-deep); }
+  .message-thanks p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    max-width: 36ch;
+    margin: 0 auto;
+  }
+
+  /* The bottom band — extras */
+  section.contact-extras {
+    padding: clamp(4rem, 8vw, 6rem) var(--gutter);
+    border-top: 1px solid rgba(15,17,21,0.08);
+    background: var(--ink);
+    color: var(--parchment);
+  }
+  .extras-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(2rem, 4vw, 4rem);
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .extra {
+    padding-left: 1.5rem;
+    border-left: 1px solid var(--bronze);
+  }
+  .extra .label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--bronze);
+    margin-bottom: 1rem;
+  }
+  .extra h3 {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: 1.5rem;
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+  }
+  .extra h3 em { font-style: italic; color: var(--bronze); }
+  .extra p {
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: rgba(242,235,221,0.75);
+    margin-bottom: 1rem;
+  }
+  .extra a {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--bronze);
+    border-bottom: 1px solid rgba(139,111,63,0.4);
+    padding-bottom: 2px;
+  }
+  .extra a:hover { color: var(--parchment); border-color: var(--bronze); }
+
+  @media (max-width: 900px) {
+    .contact-grid { grid-template-columns: 1fr; }
+    .message-card { position: static; }
+    .directory-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    .extras-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wordmark">
+    <a href="index.html">Norrœna<span class="sub">Solutions</span></a>
+  </div>
+  <nav class="primary">
+    <a href="practice.html">Practice</a>
+    <a href="case-studies.html">Case studies</a>
+    <a href="founder.html">Founder</a>
+    <a href="contact.html" aria-current="page">Contact</a>
+    <a href="audit.html" class="cta">Begin with an audit</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- Page hero -->
+  <section class="page-hero">
+    <div class="eyebrow reveal d1">Get in touch</div>
+    <h1 class="reveal d2">A door, not a <em>funnel.</em></h1>
+    <p class="deck reveal d3">
+      Most relationships begin with the audit — but not all. If you have a question,
+      a referral, a partnership idea, or simply want to introduce yourself,
+      this is the right place to start.
+    </p>
+  </section>
+
+  <!-- Contact split -->
+  <section class="contact">
+    <div class="contact-grid">
+
+      <!-- ============== LEFT — DIRECTORY ============== -->
+      <div class="directory scroll-reveal">
+        <h2>Where to find <em>us.</em></h2>
+        <p class="intro">
+          Norrœna is a solo practice. Every message goes directly to Michael —
+          no filter, no inbox triage, no AI sorting. That's deliberate. Replies
+          arrive within one business day, usually sooner.
+        </p>
+
+        <div class="directory-list">
+          <div class="directory-item">
+            <div class="label">Email</div>
+            <div class="value">
+              <a href="mailto:michael@norroena.com">michael@norroena.com</a>
+              <small>The fastest path for almost anything.</small>
+            </div>
+          </div>
+
+          <div class="directory-item">
+            <div class="label">Phone</div>
+            <div class="value">
+              <a href="tel:+18015550000">(801) 555-0000</a>
+              <small>By appointment — schedule via email and we'll set a window.</small>
+            </div>
+          </div>
+
+          <div class="directory-item">
+            <div class="label">LinkedIn</div>
+            <div class="value">
+              <a href="#" rel="me">linkedin.com/in/michaelknudson</a>
+              <small>For introductions, referrals, and longer-form posts.</small>
+            </div>
+          </div>
+
+          <div class="directory-item">
+            <div class="label">Based in</div>
+            <div class="value">
+              Highland, Utah
+              <small>Mountain Time. Practice serves clients in every U.S. timezone.</small>
+            </div>
+          </div>
+
+          <div class="directory-item">
+            <div class="label">Hours</div>
+            <div class="value">
+              Mon — Fri, 8a — 5p MT
+              <small>Email is monitored outside hours; replies still arrive same-day Mon — Thu.</small>
+            </div>
+          </div>
+        </div>
+
+        <blockquote class="directory-pullquote">
+          <span class="marker">— A working principle</span>
+          Every message gets a person on the other end.
+          That's not a feature. It's the whole offer.
+        </blockquote>
+      </div>
+
+      <!-- ============== RIGHT — MESSAGE CARD ============== -->
+      <div>
+        <form class="message-card scroll-reveal" id="message-form" onsubmit="event.preventDefault(); document.getElementById('message-form').style.display='none'; document.getElementById('message-thanks').style.display='block';">
+          <div class="card-eyebrow">Send a message</div>
+          <h3>Or write to us <em>here.</em></h3>
+          <p class="card-note">
+            A short form for any kind of inquiry — not just an audit request.
+            Replies within one business day.
+          </p>
+
+          <div class="field">
+            <label for="m-name">Your name <span class="required">*</span></label>
+            <input type="text" id="m-name" name="name" required placeholder="First and last">
+          </div>
+
+          <div class="field">
+            <label for="m-email">Email <span class="required">*</span></label>
+            <input type="email" id="m-email" name="email" required placeholder="you@company.com">
+          </div>
+
+          <div class="field">
+            <label for="m-org">Company or affiliation</label>
+            <input type="text" id="m-org" name="org" placeholder="Optional — but helpful">
+          </div>
+
+          <div class="field">
+            <label for="m-reason">Reason for reaching out</label>
+            <select id="m-reason" name="reason">
+              <option value="question">I have a question first</option>
+              <option value="audit-curious">I'm curious about the audit</option>
+              <option value="custom-work">I have a specific custom build in mind</option>
+              <option value="referral">I'm referring someone, or asking for one</option>
+              <option value="partnership">Partnership / collaboration</option>
+              <option value="speaking">Speaking, writing, press</option>
+              <option value="hello">Just saying hello</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="m-message">Message <span class="required">*</span></label>
+            <textarea id="m-message" name="message" required rows="6" placeholder="A sentence or a few paragraphs — whatever fits."></textarea>
+          </div>
+
+          <div class="message-submit">
+            <p class="message-submit-note">
+              No mailing list. No automated reply. Just a person.
+            </p>
+            <button type="submit" class="btn-primary">
+              Send <span class="arr">→</span>
+            </button>
+          </div>
+        </form>
+
+        <div class="message-thanks" id="message-thanks">
+          <div class="section-label">Message received</div>
+          <h3>Thank you — <em>we'll be in touch.</em></h3>
+          <p>
+            Michael will reply personally within one business day. In the meantime,
+            feel free to keep exploring the site.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Extras band -->
+  <section class="contact-extras scroll-reveal">
+    <div class="extras-grid">
+      <div class="extra">
+        <div class="label">For prospective clients</div>
+        <h3>Start with an <em>audit.</em></h3>
+        <p>
+          The shortest path from "we have a problem" to a concrete plan.
+          Fixed fee, written report, no commitment beyond it.
+        </p>
+        <a href="audit.html">Request an audit →</a>
+      </div>
+
+      <div class="extra">
+        <div class="label">For referrers &amp; advisors</div>
+        <h3>Send someone <em>our way.</em></h3>
+        <p>
+          If you know a team that's outgrown manual processes but can't
+          justify enterprise software, we'd be glad of the introduction.
+        </p>
+        <a href="mailto:michael@norroena.com?subject=Referral">Send a referral →</a>
+      </div>
+
+      <div class="extra">
+        <div class="label">For partners &amp; press</div>
+        <h3>Collaborations &amp; <em>conversations.</em></h3>
+        <p>
+          Open to thoughtful partnerships, podcast conversations, guest writing,
+          and speaking on HR technology, multi-state compliance, and AI assistants.
+        </p>
+        <a href="mailto:michael@norroena.com?subject=Press%20%2F%20Partnership">Get in touch →</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="footer-top">
+    <div class="footer-mark">
+      <div class="name">Norrœna Solutions</div>
+      <div class="tag">— the bridge between people and process —</div>
+    </div>
+    <div class="footer-links">
+      <a href="practice.html">Practice</a>
+      <a href="case-studies.html">Case studies</a>
+      <a href="founder.html">Founder</a>
+      <a href="audit.html">Audit</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Norrœna Solutions, LLC · Highland, Utah</span>
+    <span>ᛒ ᛞ ᛗ ᚱ</span>
+  </div>
+</footer>
+
+<script src="assets/norroena.js"></script>
+</body>
+</html>

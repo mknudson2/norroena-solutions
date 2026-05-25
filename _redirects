@@ -1,0 +1,15 @@
+# Cloudflare Pages redirects
+# Documentation: https://developers.cloudflare.com/pages/configuration/redirects/
+
+# Pretty URLs without .html extension
+/practice          /practice.html          200
+/founder           /founder.html           200
+/case-studies      /case-studies.html      200
+/audit             /audit.html             200
+/contact           /contact.html           200
+
+# Common alternate paths people might guess
+/about             /founder.html           301
+/work              /case-studies.html      301
+/services          /practice.html          301
+/get-started       /audit.html             301

@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Practice — Norrœna Solutions</title>
+<meta name="description" content="Four pillars of the Norrœna practice: Bifröst platforms, Draupnir processes, Mímir assistants, and Rún counsel — engineered for small and mid-sized businesses." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="assets/norroena.css">
+
+<style>
+  /* ----------------------------------------------------------------
+     PRACTICE PAGE — page-specific
+     A long-form editorial layout: each pillar is a "spread"
+     with a distinctive vertical rhythm and treatment.
+     ---------------------------------------------------------------- */
+
+  /* The ladder index — a small "table of contents" device */
+  section.ladder {
+    padding: clamp(3rem, 6vw, 5rem) var(--gutter);
+    background: var(--parchment-deep);
+    border-bottom: 1px solid rgba(15,17,21,0.08);
+  }
+  .ladder-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  .ladder-item {
+    border-left: 1px solid var(--bronze);
+    padding-left: 1.25rem;
+    cursor: pointer;
+    transition: background 0.25s;
+  }
+  .ladder-item:hover { background: rgba(139,111,63,0.06); }
+  .ladder-num {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    color: var(--bronze);
+    margin-bottom: 0.5rem;
+  }
+  .ladder-name {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: 1.4rem;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.5rem;
+  }
+  .ladder-rune {
+    font-family: 'Fraunces', serif;
+    color: var(--bronze);
+    font-size: 0.85rem;
+    letter-spacing: 0.2em;
+  }
+
+  /* Pillar spreads — alternating editorial layouts */
+  section.pillar-spread {
+    padding: clamp(5rem, 10vw, 8rem) var(--gutter);
+    border-top: 1px solid rgba(15,17,21,0.08);
+    position: relative;
+  }
+  /* Alternate background pattern for visual rhythm */
+  section.pillar-spread:nth-of-type(even) { background: var(--parchment-deep); }
+  section.pillar-spread.inverted {
+    background: var(--ink);
+    color: var(--parchment);
+  }
+  section.pillar-spread.inverted .deck,
+  section.pillar-spread.inverted .pillar-body { color: rgba(242,235,221,0.8); }
+  section.pillar-spread.inverted .section-label { color: var(--bronze); }
+  section.pillar-spread.inverted .display-lg em { color: var(--bronze); }
+  section.pillar-spread.inverted .scope-line { border-color: rgba(139,111,63,0.3); }
+
+  .spread-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2rem, 5vw, 5rem);
+    align-items: end;
+    margin-bottom: 4rem;
+  }
+  .spread-header .num {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: clamp(5rem, 12vw, 9rem);
+    line-height: 0.85;
+    color: var(--bronze);
+    letter-spacing: -0.04em;
+    opacity: 0.4;
+  }
+  section.pillar-spread.inverted .spread-header .num { color: var(--bronze); opacity: 0.6; }
+
+  .spread-header .rune-display {
+    font-family: 'Fraunces', serif;
+    font-size: 2.5rem;
+    color: var(--bronze);
+    letter-spacing: 0.3em;
+    margin-bottom: 1rem;
+    line-height: 1;
+  }
+  .spread-header h2 {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    line-height: 0.95;
+    letter-spacing: -0.025em;
+    margin-bottom: 1.5rem;
+  }
+  .spread-header h2 em { font-style: italic; color: var(--bronze-deep); }
+  section.pillar-spread.inverted .spread-header h2 em { color: var(--bronze); }
+  .spread-header .deck { max-width: 42ch; }
+
+  .spread-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2rem, 6vw, 6rem);
+    align-items: start;
+  }
+
+  .pillar-body {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--ink-soft);
+  }
+  .pillar-body p + p { margin-top: 1.25rem; }
+
+  /* Offering cards — what's actually deliverable inside each pillar */
+  .offerings {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  .offering {
+    background: var(--parchment);
+    border: 1px solid rgba(15,17,21,0.12);
+    padding: 1.5rem 1.75rem;
+    transition: border-color 0.25s, transform 0.25s;
+  }
+  .offering:hover {
+    border-color: var(--bronze);
+    transform: translateX(4px);
+  }
+  section.pillar-spread.inverted .offering {
+    background: var(--ink-soft);
+    border-color: rgba(139,111,63,0.25);
+  }
+  section.pillar-spread.inverted .offering:hover {
+    border-color: var(--bronze);
+  }
+  .offering-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.5rem;
+    gap: 1rem;
+  }
+  .offering-name {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 1.25rem;
+    letter-spacing: -0.01em;
+  }
+  .offering-price {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.05em;
+    color: var(--bronze);
+    white-space: nowrap;
+  }
+  .offering-desc {
+    font-size: 0.92rem;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  section.pillar-spread.inverted .offering-desc { color: rgba(242,235,221,0.7); }
+
+  /* Scope boundaries — the "explicitly NOT included" device */
+  .scope-line {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(15,17,21,0.15);
+  }
+  .scope-line-label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--bronze);
+    margin-bottom: 0.75rem;
+  }
+  .scope-line-text {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 300;
+    font-size: 1.05rem;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    max-width: 50ch;
+  }
+  section.pillar-spread.inverted .scope-line-text { color: rgba(242,235,221,0.7); }
+
+  /* How-it-works strip — under each pillar */
+  .how-strip {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(15,17,21,0.15);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+  section.pillar-spread.inverted .how-strip { border-color: rgba(139,111,63,0.25); }
+  .how-step {
+    position: relative;
+  }
+  .how-step .step-num {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    color: var(--bronze);
+    margin-bottom: 0.5rem;
+  }
+  .how-step h4 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 1.1rem;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.01em;
+  }
+  .how-step p {
+    font-size: 0.88rem;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  section.pillar-spread.inverted .how-step p { color: rgba(242,235,221,0.7); }
+
+  /* Service ladder section — the strategic context */
+  section.ladder-context {
+    padding: clamp(5rem, 10vw, 8rem) var(--gutter);
+    border-top: 1px solid rgba(15,17,21,0.08);
+    background: var(--parchment-deep);
+  }
+  .ladder-rungs {
+    display: grid;
+    grid-template-columns: 60px 1fr 1fr;
+    gap: 2rem;
+    align-items: start;
+    margin-top: 3rem;
+  }
+  .rung {
+    display: contents;
+  }
+  .rung-num {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: 2.5rem;
+    color: var(--bronze);
+    line-height: 1;
+    border-right: 1px solid var(--bronze);
+    padding-right: 1.5rem;
+    text-align: right;
+  }
+  .rung-name {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 1.5rem;
+    letter-spacing: -0.01em;
+  }
+  .rung-name em { font-style: italic; color: var(--bronze-deep); }
+  .rung-desc {
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: var(--ink-soft);
+  }
+  .rung-spacer {
+    grid-column: 1 / -1;
+    height: 1.5rem;
+    border-bottom: 1px solid rgba(15,17,21,0.1);
+    margin-bottom: 1.5rem;
+  }
+
+  /* Closer / next step */
+  section.closer-min {
+    padding: clamp(5rem, 8vw, 7rem) var(--gutter);
+    border-top: 1px solid rgba(15,17,21,0.08);
+    text-align: center;
+  }
+  section.closer-min .display-lg { margin: 0 auto 2rem; max-width: 22ch; }
+  section.closer-min .deck { margin: 0 auto 2.5rem; max-width: 52ch; }
+  section.closer-min .cta-row {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 900px) {
+    .ladder-grid { grid-template-columns: repeat(2, 1fr); }
+    .spread-header { grid-template-columns: 1fr; gap: 1.5rem; }
+    .spread-body { grid-template-columns: 1fr; }
+    .how-strip { grid-template-columns: repeat(2, 1fr); }
+    .ladder-rungs { grid-template-columns: 40px 1fr; }
+    .rung-desc { grid-column: 2; }
+  }
+  @media (max-width: 540px) {
+    .ladder-grid { grid-template-columns: 1fr; }
+    .how-strip { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wordmark">
+    <a href="index.html">Norrœna<span class="sub">Solutions</span></a>
+  </div>
+  <nav class="primary">
+    <a href="practice.html" aria-current="page">Practice</a>
+    <a href="case-studies.html">Case studies</a>
+    <a href="founder.html">Founder</a>
+    <a href="contact.html">Contact</a>
+    <a href="audit.html" class="cta">Begin with an audit</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- Page hero -->
+  <section class="page-hero">
+    <div class="eyebrow reveal d1">The practice</div>
+    <h1 class="reveal d2">Four pillars.<br><em>One discipline.</em></h1>
+    <p class="deck reveal d3">
+      Norrœna's practice is organized as four interlocking domains — each
+      built to stand alone, each engineered to compound when combined.
+      Together, they cover the full arc from "we have a problem we can't name"
+      to "the system runs itself and the team finally has its time back."
+    </p>
+  </section>
+
+  <!-- Ladder navigation -->
+  <section class="ladder scroll-reveal">
+    <div class="section-label">Jump to a pillar</div>
+    <div class="ladder-grid">
+      <a href="#bifrost" class="ladder-item">
+        <div class="ladder-num">01 · Platforms</div>
+        <div class="ladder-name">Bifröst</div>
+        <div class="ladder-rune">ᛒᛁᚠᚱᛟᛋᛏ</div>
+      </a>
+      <a href="#draupnir" class="ladder-item">
+        <div class="ladder-num">02 · Processes</div>
+        <div class="ladder-name">Draupnir</div>
+        <div class="ladder-rune">ᛞᚱᚨᚢᛈᚾᛁᚱ</div>
+      </a>
+      <a href="#mimir" class="ladder-item">
+        <div class="ladder-num">03 · Assistants</div>
+        <div class="ladder-name">Mímir</div>
+        <div class="ladder-rune">ᛗᛁᛗᛁᚱ</div>
+      </a>
+      <a href="#run" class="ladder-item">
+        <div class="ladder-num">04 · Counsel</div>
+        <div class="ladder-name">Rún</div>
+        <div class="ladder-rune">ᚱᚢᚾ</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ==========================================================
+       PILLAR 01 — BIFRÖST · Platforms
+       ========================================================== -->
+  <section class="pillar-spread scroll-reveal" id="bifrost">
+    <div class="spread-header">
+      <div>
+        <div class="num">01</div>
+      </div>
+      <div>
+        <div class="section-label">Platforms</div>
+        <div class="rune-display">ᛒᛁᚠᚱᛟᛋᛏ</div>
+        <h2>Bifröst — the <em>rainbow bridge</em>.</h2>
+        <p class="deck">
+          A full HR information and management suite —
+          built originally for a multi-state, fully-remote workforce of 350 people,
+          and configured for yours.
+        </p>
+      </div>
+    </div>
+
+    <div class="spread-body">
+      <div class="pillar-body">
+        <p>
+          Bifröst is the platform asset behind everything Norrœna delivers.
+          It's a working HR information and management system —
+          payroll-adjacent, compliance-aware, multi-state capable —
+          configurable as either a complete suite or a partial implementation
+          covering only the domains you actually need.
+        </p>
+        <p>
+          What sets it apart isn't a feature list. It's that every module
+          was designed by someone who lived inside the compliance and
+          people-operations work it's meant to support — not interpreted
+          through requirements documents passed between strangers.
+        </p>
+        <p>
+          Implementations are priced as milestone projects, never hourly.
+          Speed is the client's benefit. The discipline of fixed milestones
+          is the protection on both sides.
+        </p>
+
+        <div class="scope-line">
+          <div class="scope-line-label">A note on scope</div>
+          <p class="scope-line-text">
+            Implementations always carry a written, bounded scope —
+            agreed domains, agreed data migration, agreed acceptance criteria.
+            Open-ended platform "rebuilds" are not on offer.
+          </p>
+        </div>
+      </div>
+
+      <div class="offerings">
+        <div class="offering">
+          <div class="offering-top">
+            <div class="offering-name">Partial Suite Implementation</div>
+            <div class="offering-price">$15k–$30k</div>
+          </div>
+          <p class="offering-desc">
+            One to two HR domains — for example, leave management and
+            multi-state payroll prep — configured to your processes,
+            with bounded data migration and a defined go-live window.
+          </p>
+        </div>
+
+        <div class="offering">
+          <div class="offering-top">
+            <div class="offering-name">Full Suite Implementation</div>
+            <div class="offering-price">$30k–$60k+</div>
+          </div>
+          <p class="offering-desc">
+            End-to-end deployment across the agreed domains, staged with
+            per-domain configuration sign-offs, phased UAT, and a defined
+            hypercare window.
+          </p>
+        </div>
+
+        <div class="offering">
+          <div class="offering-top">
+            <div class="offering-name">Managed retainer (post-launch)</div>
+            <div class="offering-price">$1.5k–$6k / mo</div>
+          </div>
+          <p class="offering-desc">
+            Continuity once you're live — maintenance, compliance updates,
+            scheduled enhancements, and a fractional HR-technology relationship
+            sized to a defined monthly capacity.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="how-strip">
+      <div class="how-step">
+        <div class="step-num">Step · 01</div>
+        <h4>Audit &amp; scope</h4>
+        <p>A Rún audit grounds the work in actual findings — never assumptions.</p>
+      </div>
+      <div class="how-step">
+        <div class="step-num">Step · 02</div>
+        <h4>Configure</h4>
+        <p>Modules tuned to your processes, your states, your reporting needs.</p>
+      </div>
+      <div class="how-step">
+        <div class="step-num">Step · 03</div>
+        <h4>Migrate &amp; test</h4>
+        <p>Bounded data migration with reconciliation sign-off at each stage.</p>
+      </div>
+      <div class="how-step">
+        <div class="step-num">Step · 04</div>
+        <h4>Go live &amp; hand off</h4>
+        <p>Phased rollout, training, and a hypercare window before the retainer.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================
+       PILLAR 02 — DRAUPNIR · Processes (inverted spread)
+       ========================================================== -->
+  <section class="pillar-spread inverted scroll-reveal" id="draupnir">
+    <div class="spread-header">
+      <div>
+        <div class="num">02</div>
+      </div>
+      <div>
+        <div class="section-label">Processes</div>
+        <div class="rune-display">ᛞᚱᚨᚢᛈᚾᛁᚱ</div>
+        <h2>Draupnir — the <em>ring that drips</em>.</h2>
+        <p class="deck">
+          One painful manual process, automated end-to-end.
+          Custom reports nobody else can build. The integration that
+          finally makes two systems talk. Forged once. Sharply scoped.
+          Fixed-priced. And engineered so the next one comes faster.
+        </p>
+      </div>
+    </div>
+
+    <div class="spread-body">
+      <div class="pillar-body">
+        <p>
+          Draupnir is the modular tier. Where Bifröst is the cathedral,
+          Draupnir is the gold ring Odin wore — the artifact whose work
+          is to multiply itself. Each engagement removes one specific,
+          named pain point from your team's plate. Each one, by design,
+          also makes the next one cheaper to deliver.
+        </p>
+        <p>
+          The discipline that makes these engagements safe for both
+          sides is the same that makes them fast: a written scope,
+          a defined test set, a fixed price, and explicit acceptance
+          criteria. Anything outside that envelope is a change order,
+          never absorbed.
+        </p>
+        <p>
+          Most clients come to Norrœna through Draupnir — one stubborn
+          process they've been working around for years. They stay
+          because every build feeds the platform asset behind them,
+          and what was a singular act of craft becomes, by the second
+          or third engagement, a rhythm.
+        </p>
+
+        <div class="scope-line">
+          <div class="scope-line-label">A note on scope</div>
+          <p class="scope-line-text">
+            Each Draupnir engagement names exactly one process, one report set,
+            or one integration. Discovery of additional automation candidates
+            is captured for a follow-on, not folded into the current build.
+          </p>
+        </div>
+      </div>
+
+      <div class="offerings">
+        <div class="offering">
+          <div class="offering-top">
+            <div class="offering-name">Single automation / workflow</div>
+            <div class="offering-price">$3k–$7k</div>
+          </div>
+          <p class="offering-desc">
+            One process automated end-to-end — defined trigger,
+            agreed logic, tested outputs, written operating documentation.
+          </p>
+        </div>
+
+        <div class="offering">
+          <div class="offering-top">
+            <div class="offering-name">Custom report suite</div>
+            <div class="offering-price">$4k–$9k</div>
+          </div>
+          <p class="offering-desc">
+            A defined set of recurring reports built to specified fields and logic,
+            validated against your reference dataset, with a refresh mechanism.
+          </p>
+        </div>
+
+        <div class="offering">
+          <div class="offering-top">
+            <div class="offering-name">Integration / data bridge</div>
+            <div class="offering-price">$4k–$12k</div>
+          </div>
+          <p class="offering-desc">
+            One named system-to-system data flow with agreed field mapping,
+            sync cadence, error handling, and a failure-notification path.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="how-strip">
+      <div class="how-step">
+        <div class="step-num">Step · 01</div>
+        <h4>Define</h4>
+        <p>One process. Trigger, logic, outputs, edge cases — written down.</p>
+      </div>
+      <div class="how-step">
+        <div class="step-num">Step · 02</div>
+        <h4>Forge</h4>
+        <p>Built against the agreed scope, tested against the agreed cases.</p>
+      </div>
+      <div class="how-step">
+        <div class="step-num">Step · 03</div>
+        <h4>Hand off</h4>
+        <p>A walkthrough, written operating documentation, a defined warranty.</p>
+      </div>
+      <div class="how-step">
+        <div class="step-num">Step · 04</div>
+        <h4>Multiply</h4>
+        <p>Each build feeds the platform asset — and drips into the next.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================
+       PILLAR 03 — MÍMIR · Assistants
+       ========================================================== -->
+  <section class="pillar-spread scroll-reveal" id="mimir">
+    <div class="spread-header">
+      <div>
+        <div class="num">03</div>
+      </div>
+      <div>
+        <div class="section-label">Assistants</div>
+        <div class="rune-display">ᛗᛁᛗᛁᚱ</div>
+        <h2>Mímir — the <em>well of counsel</em>.</h2>
+        <p class="deck">
+          AI assistants drawing strictly from your own documentation —
+          knowledge Q&amp;A, document preparation, and policy lookup,
+          scoped to a corpus you control and a use case you define.
+        </p>
+      </div>
+    </div>
+
+    <div class="spread-body">
+      <div class="pillar-body">
+        <p>
+          Mímir is what we build when the right answer to a recurring question
+          already exists somewhere in your handbook, your policy library,
+          your benefits documents, or your accumulated emails —
+          but it takes thirty minutes to find every time, and three different
+          people are answering it inconsistently.
+        </p>
+        <p>
+          Every Mímir engagement is scoped to a defined corpus and a defined
+          use case. The assistant draws from documents you supply,
+          not the open internet. Guardrails are designed in. A human-review
+          process is included in the handoff — model output is never sold
+          as infallible, and we don't pretend otherwise.
+        </p>
+        <p>
+          This is the pillar where Norrœna's HR-plus-engineering profile
+          matters most: knowing which use cases are responsible to automate
+          and which are not is a judgment call, not a technology question.
+        </p>
+
+        <div class="scope-line">
+          <div class="scope-line-label">A note on scope</div>
+          <p class="scope-line-text">
+            The corpus is bounded. The use case is named. Open-ended
+            "make us an AI" engagements are declined — that scope cannot
+            be priced honestly.
+          </p>
+        </div>
+      </div>
+
+      <div class="offerings">
+        <div class="offering">
+          <div class="offering-top">
+            <div class="offering-name">Knowledge assistant</div>
+            <div class="offering-price">$6k–$15k</div>
+          </div>
+          <p class="offering-desc">
+            Question-answering over your handbook, policy library, or
+            benefits documentation, with citation back to the source
+            document for every answer.
+          </p>
+        </div>
+
+        <div class="offering">
+          <div class="offering-top">
+            <div class="offering-name">Document-preparation assistant</div>
+            <div class="offering-price">$6k–$15k</div>
+          </div>
+          <p class="offering-desc">
+            Drafting of recurring documents — offer letters, policy
+            updates, state-specific notices — pulled from approved
+            templates and reviewed before issue.
+          </p>
+        </div>
+
+        <div class="offering">
+          <div class="offering-top">
+            <div class="offering-name">Embedded retainer (Mímir-care)</div>
+            <div class="offering-price">$1.5k+ / mo</div>
+          </div>
+          <p class="offering-desc">
+            Continuity once deployed — corpus updates, accuracy review,
+            and adjustment as your documents and policies evolve.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="how-strip">
+      <div class="how-step">
+        <div class="step-num">Step · 01</div>
+        <h4>Curate</h4>
+        <p>We define the corpus together — only what you want the assistant to know.</p>
+      </div>
+      <div class="how-step">
+        <div class="step-num">Step · 02</div>
+        <h4>Ingest</h4>
+        <p>Documents are processed, indexed, and bounded by access rules.</p>
+      </div>
+      <div class="how-step">
+        <div class="step-num">Step · 03</div>
+        <h4>Evaluate</h4>
+        <p>Tested against an agreed evaluation set with a defined accuracy threshold.</p>
+      </div>
+      <div class="how-step">
+        <div class="step-num">Step · 04</div>
+        <h4>Hand off</h4>
+        <p>Operating guide, review process, and a path for corpus growth.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================
+       PILLAR 04 — RÚN · Counsel (inverted spread)
+       ========================================================== -->
+  <section class="pillar-spread inverted scroll-reveal" id="run">
+    <div class="spread-header">
+      <div>
+        <div class="num">04</div>
+      </div>
+      <div>
+        <div class="section-label">Counsel</div>
+        <div class="rune-display">ᚱᚢᚾ</div>
+        <h2>Rún — the <em>quiet word</em>.</h2>
+        <p class="deck">
+          Audits and advisory. The fixed-fee written report that surfaces
+          exactly where time is leaking and exposure is hiding —
+          and the roadmap of what to do about it.
+        </p>
+      </div>
+    </div>
+
+    <div class="spread-body">
+      <div class="pillar-body">
+        <p>
+          Rún is the front door. The lead engagement. The wedge.
+          Most Norrœna relationships start here — with a structured,
+          low-risk diagnostic that produces a written report your
+          leadership can read in an evening.
+        </p>
+        <p>
+          The flagship offer is the Multi-State HR Compliance &amp;
+          Process Audit, drawn directly from lived multi-state,
+          fully-remote experience. For clients whose pain is more
+          process-and-tooling than multi-state, we run a broader
+          Standard Process &amp; Tech Audit on the same template.
+        </p>
+        <p>
+          Audits are deliberately priced to be an easy yes — because
+          their purpose is to open the relationship, not to drive
+          margin. The fee credits toward whatever follows.
+        </p>
+
+        <div class="scope-line">
+          <div class="scope-line-label">A note on scope</div>
+          <p class="scope-line-text">
+            Audits produce findings and a roadmap — not legal opinions
+            and not implementation. We flag exposure;
+            we do not give legal advice.
+          </p>
+        </div>
+      </div>
+
+      <div class="offerings">
+        <div class="offering">
+          <div class="offering-top">
+            <div class="offering-name">Multi-State Compliance Audit</div>
+            <div class="offering-price">$3k–$4.5k</div>
+          </div>
+          <p class="offering-desc">
+            The lead offer. Structured review of HR and people-operations
+            workflows across the states you operate in, with prioritized
+            findings and a roadmap.
+          </p>
+        </div>
+
+        <div class="offering">
+          <div class="offering-top">
+            <div class="offering-name">Standard Process &amp; Tech Audit</div>
+            <div class="offering-price">$2.5k–$4k</div>
+          </div>
+          <p class="offering-desc">
+            For clients whose pain is process and tooling, not multi-state
+            compliance. Workflow mapping, tech assessment, modernization
+            sequence.
+          </p>
+        </div>
+
+        <div class="offering">
+          <div class="offering-top">
+            <div class="offering-name">Focused Audit</div>
+            <div class="offering-price">$1.5k–$2.5k</div>
+          </div>
+          <p class="offering-desc">
+            One process area, one small team. The right entry point when
+            you already know roughly where the bottleneck lives.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="how-strip">
+      <div class="how-step">
+        <div class="step-num">Step · 01</div>
+        <h4>Scope call</h4>
+        <p>Thirty minutes to align on what we're reviewing and what we're not.</p>
+      </div>
+      <div class="how-step">
+        <div class="step-num">Step · 02</div>
+        <h4>Review</h4>
+        <p>Structured analysis of workflows, tooling, and compliance touchpoints.</p>
+      </div>
+      <div class="how-step">
+        <div class="step-num">Step · 03</div>
+        <h4>Report</h4>
+        <p>A written findings document — severity, effort, recommended sequence.</p>
+      </div>
+      <div class="how-step">
+        <div class="step-num">Step · 04</div>
+        <h4>Walkthrough</h4>
+        <p>A live session to discuss findings and chart the next move.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- The service ladder context -->
+  <section class="ladder-context scroll-reveal">
+    <div class="section-label">How the practice fits together</div>
+    <h2 class="display-lg">An ascending <em>ladder</em>, not a flat menu.</h2>
+    <p class="deck" style="margin-top: 1.5rem; max-width: 60ch;">
+      Each rung lowers the buyer's risk for the next. Most relationships
+      start at Rún, advance to Draupnir, and end at Bifröst with a managed retainer.
+      None of it is required. All of it is available.
+    </p>
+
+    <div class="ladder-rungs">
+      <div class="rung-num">I</div>
+      <div class="rung-name">Diagnose with <em>Rún</em></div>
+      <div class="rung-desc">A fixed-fee audit produces a written map of where time is lost and where compliance exposure hides.</div>
+      <div class="rung-spacer"></div>
+
+      <div class="rung-num">II</div>
+      <div class="rung-name">Solve with <em>Draupnir</em></div>
+      <div class="rung-desc">The highest-priority finding becomes a sharply-scoped, fixed-priced modular build — and a proof of capability.</div>
+      <div class="rung-spacer"></div>
+
+      <div class="rung-num">III</div>
+      <div class="rung-name">Deploy with <em>Bifröst</em></div>
+      <div class="rung-desc">As trust accumulates, scope widens — from modules toward a partial or full HR-suite implementation.</div>
+      <div class="rung-spacer"></div>
+
+      <div class="rung-num">IV</div>
+      <div class="rung-name">Sustain with a <em>retainer</em></div>
+      <div class="rung-desc">A defined monthly capacity keeps the system current and provides a fractional HR-technology relationship.</div>
+    </div>
+  </section>
+
+  <!-- Closer -->
+  <section class="closer-min scroll-reveal">
+    <div class="section-label" style="justify-content: center;">The next step</div>
+    <h2 class="display-lg">Not sure where to <em>start?</em></h2>
+    <p class="deck">
+      Almost every engagement begins the same way — with a Rún audit.
+      It's low-commitment, fixed-fee, and the findings belong to you regardless.
+    </p>
+    <div class="cta-row">
+      <a href="audit.html" class="btn-primary">Request an audit <span class="arr">→</span></a>
+      <a href="contact.html" class="btn-secondary">Ask a question first</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="footer-top">
+    <div class="footer-mark">
+      <div class="name">Norrœna Solutions</div>
+      <div class="tag">— the bridge between people and process —</div>
+    </div>
+    <div class="footer-links">
+      <a href="practice.html">Practice</a>
+      <a href="case-studies.html">Case studies</a>
+      <a href="founder.html">Founder</a>
+      <a href="audit.html">Audit</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Norrœna Solutions, LLC · Highland, Utah</span>
+    <span>ᛒ ᛞ ᛗ ᚱ</span>
+  </div>
+</footer>
+
+<script src="assets/norroena.js"></script>
+</body>
+</html>

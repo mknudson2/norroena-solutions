@@ -1,0 +1,13 @@
+{
+  "name": "norroena-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Marketing website for Norrœna Solutions — the bridge between people and process",
+  "scripts": {
+    "dev": "python3 -m http.server 8000",
+    "dev:node": "npx --yes http-server -p 8000 -c-1",
+    "format-check": "echo 'No formatter configured. Edit HTML/CSS directly.'"
+  },
+  "author": "Michael Knudson",
+  "license": "UNLICENSED"
+}
