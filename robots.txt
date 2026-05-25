@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://norroena.com/sitemap.xml
+Sitemap: https://norroenasolutions.com/sitemap.xml
