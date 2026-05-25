@@ -9,11 +9,13 @@
 The marketing website for **Norrœna Solutions**, a solo HR-technology consultancy founded by Michael Knudson. The site exists to:
 
 1. Establish credibility for a brand-new firm whose founder has unusual hybrid expertise (Ph.D., PHR, Full-Stack Developer)
-2. Convert visitors into "Multi-State HR Compliance & Process Audit" engagements — the wedge offer
-3. Educate sophisticated buyers (HR directors, COOs, founders of multi-state SMBs) on a four-pillar service practice
+2. Convert visitors into "HR Operations Audit" engagements — the wedge offer (operations-first framing, with compliance as one dimension among several)
+3. Educate sophisticated buyers (HR directors, COOs, founders of mid-sized SMBs) on a four-pillar service practice: platforms, processes, AI assistants, and counsel
 4. Read as a *considered editorial publication*, not a SaaS brochure
 
 This is a **static HTML site** by deliberate choice. No React, no Next.js, no build step beyond a tiny local dev server. The site is meant to be readable, portable, and durable for a decade — not a tech-stack showcase.
+
+**Positioning note:** The firm's identity is *HR-technologist who happens to understand compliance deeply* — not *HR compliance consultant who also does some technology work*. The compliance literacy is what makes the technical work defensible; the technical work is what makes the firm differentiated. When in doubt about framing, lead with the technical/operations identity and let compliance show up as proof of depth.
 
 ---
 
@@ -131,14 +133,22 @@ A previous draft used a constructed word "Týrst" for the Processes pillar. **T�
 
 ## Wedge offer — the conversion target
 
-The single highest-leverage conversion goal of the website is to drive sophisticated visitors to the **Multi-State HR Compliance & Process Audit**. This is:
+The single highest-leverage conversion goal of the website is to drive sophisticated visitors to the **HR Operations Audit**. This is:
 
 - A fixed-fee diagnostic engagement, $3,000–$4,500
-- Delivered as a written findings report plus walkthrough
+- Frames around "where is your team losing time?" rather than "are you compliant?" — the diagnostic is operations-first, with compliance posture covered as one dimension among several
+- Delivered as a written findings report plus walkthrough — the deliverable is an operations & automation roadmap, not a compliance gap report
 - Designed to be an easy yes — the fee credits forward into follow-on work
+- Natural follow-on is platform/process work (Bifröst/Draupnir/Mímir engagements), not "fix the compliance gaps"
 - Surfaced prominently on `index.html` (closer section), in the nav (the "Begin with an audit" CTA), and is the destination of `audit.html`
 
-**Every interior page ends with a Rún audit CTA.** This is intentional. Do not remove or weaken these CTAs without operator approval.
+**Every interior page ends with an audit CTA.** This is intentional. Do not remove or weaken these CTAs without operator approval.
+
+### Important context — strategic repositioning, 2026-05-25
+
+The site originally positioned the wedge as a "Multi-State HR Compliance & Process Audit." This was strategically wrong: it overemphasized compliance and underemphasized the technical-craft identity that is the firm's actual differentiator. The operator (Michael Knudson, Ph.D./PHR/full-stack developer) is unusual in combining HR compliance literacy with software engineering — leading with compliance positions him as a typical HR consultant rather than what he actually is. The repositioning to "HR Operations Audit" with operations-first framing is deliberate. Do NOT drift back toward compliance-first framing without explicit operator approval.
+
+The compliance literacy is the **substrate of credibility**, not the **product**. Don't invert this.
 
 ---
 
@@ -156,7 +166,10 @@ The single highest-leverage conversion goal of the website is to drive sophistic
 
 ### When adding a new pillar offering or case study
 - Pillar offerings live in `practice.html` inside the relevant pillar spread (`#bifrost`, `#draupnir`, `#mimir`, `#run`).
-- Case studies live in `case-studies.html` as `<article class="case">` blocks. They MUST have a `data-pillars` attribute listing the applicable pillars (space-separated). The filter chips at the top reference these values.
+- The case-studies page (`case-studies.html`) currently documents **systems in production** built by the operator in his current employed role — NOT fictional client engagements. This was a deliberate choice (made 2026-05-25) to be honest about Norrœna being new while still demonstrating capability. The framing is "selected systems, in production" with the disclosure paragraph naming the source ("the sole HR specialist for a 350-employee firm operating across 31+ states"). Do NOT replace this framing with fictional client case studies; do NOT remove the disclosure.
+- When real Norrœna client engagements close and publication consent is granted, ADD them to the page (don't replace the in-production systems). The page can grow to mix both categories with the in-production systems remaining as foundational capability proof.
+- Each case article uses `<article class="case">` blocks with a `data-pillars` attribute listing the applicable pillars (space-separated). The filter chips at the top reference these values.
+- Each case ends with a `.case-engagement-parallel` paragraph in italic that translates "system I built" into "what a Norrœna engagement at this scope would cost." This bridges demonstration into the sales motion. Maintain this pattern.
 
 ### When adding a new page
 1. Copy an existing page as a starting point (founder.html is a good template for content pages, audit.html for forms).
@@ -178,12 +191,20 @@ The single highest-leverage conversion goal of the website is to drive sophistic
 - ✅ Shared CSS extracted, single source of truth
 - ✅ Týrst → Draupnir swap complete and verified
 - ✅ Runic inscriptions verified against Elder Futhark
+- ✅ Domain registered: `norroenasolutions.com` (via Cloudflare)
+- ✅ Site deployed to Netlify, live at https://norroenasolutions.com
+- ✅ SSL certificate provisioned (Let's Encrypt via Netlify)
+- ✅ DNS managed at Cloudflare, traffic routed to Netlify
+- ✅ Custom email at michael@norroenasolutions.com (Fastmail)
+- ✅ Brand identity system: wordmark + monogram + favicon (Bifröst rune ᛒ)
+- ✅ Favicons installed (svg, ico, apple-touch-icon, android-chrome 192/512)
+- ✅ Open Graph image (og-image.png 1200×630) installed
+- ✅ Per-page OG metadata wired into every HTML file
+- ✅ site.webmanifest for PWA-style icon behavior
 - ⏳ Forms are visually complete but do not yet submit anywhere (placeholder confirmation panels only)
-- ⏳ Email address `michael@norroena.com` is a placeholder — not yet provisioned
 - ⏳ Phone number on contact.html is a placeholder
 - ⏳ LinkedIn URL is a placeholder
 - ⏳ Case studies use anonymized/fictional engagements — first real case study TBD as engagements close
-- ⏳ No domain configured yet — production target is `norroena.com` (TBD)
 - ⏳ Analytics not yet wired up
 
 ## Pending decisions for the operator

@@ -1,764 +1,937 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Case Studies — Norrœna Solutions</title>
-<meta name="description" content="Sanitized capability case studies — multi-state compliance, custom reporting, AI-assisted document preparation, and platform implementations." />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Work — Norrœna Solutions</title>
+  <meta name="description"
+    content="Sanitized capability case studies — multi-state compliance, custom reporting, AI-assisted document preparation, and platform implementations." />
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <!-- Favicons & app icons -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#0F1115">
 
-<link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <!-- Open Graph — for social-media link previews -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://norroenasolutions.com/case-studies">
+  <meta property="og:title" content="The Work — Norrœna Solutions">
+  <meta property="og:description"
+    content="Selected systems, in production. A working portfolio of HR technology in active use — built by a practitioner who also writes the code.">
+  <meta property="og:image" content="https://norroenasolutions.com/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
 
-<link rel="stylesheet" href="assets/norroena.css">
+  <!-- Twitter card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The Work — Norrœna Solutions">
+  <meta name="twitter:description"
+    content="Selected systems, in production. A working portfolio of HR technology in active use — built by a practitioner who also writes the code.">
+  <meta name="twitter:image" content="https://norroenasolutions.com/og-image.png">
 
-<style>
-  /* ----------------------------------------------------------------
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <link rel="stylesheet" href="assets/norroena.css">
+
+  <style>
+    /* ----------------------------------------------------------------
      CASE STUDIES — page-specific
      Each case is structured like a field record / dossier:
      situation, intervention, outcome, written with the precision
      of documentation rather than the breathlessness of marketing.
      ---------------------------------------------------------------- */
 
-  /* Trust disclosure — the honest preamble */
-  section.disclosure {
-    padding: clamp(3rem, 5vw, 4rem) var(--gutter);
-    background: var(--parchment-deep);
-    border-bottom: 1px solid rgba(15,17,21,0.08);
-  }
-  .disclosure-inner {
-    max-width: 800px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 2rem;
-    align-items: center;
-  }
-  .disclosure-mark {
-    font-family: 'Fraunces', serif;
-    font-size: 3rem;
-    color: var(--bronze);
-    line-height: 1;
-  }
-  .disclosure-text {
-    font-family: var(--font-display);
-    font-style: italic;
-    font-weight: 300;
-    font-size: 1.05rem;
-    line-height: 1.65;
-    color: var(--ink-soft);
-  }
-  .disclosure-text strong {
-    font-style: normal;
-    font-weight: 500;
-    color: var(--ink);
-  }
+    /* Trust disclosure — the honest preamble */
+    section.disclosure {
+      padding: clamp(3rem, 5vw, 4rem) var(--gutter);
+      background: var(--parchment-deep);
+      border-bottom: 1px solid rgba(15, 17, 21, 0.08);
+    }
 
-  /* Filter chips */
-  section.filter-bar {
-    padding: 2rem var(--gutter);
-    border-bottom: 1px solid rgba(15,17,21,0.08);
-    display: flex;
-    gap: 2rem;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-  .filter-label {
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--bronze);
-  }
-  .filter-chips {
-    display: flex;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-  }
-  .chip {
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    padding: 0.5rem 1rem;
-    border: 1px solid rgba(15,17,21,0.2);
-    color: var(--ink);
-    background: transparent;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-  .chip:hover { border-color: var(--bronze); color: var(--bronze-deep); }
-  .chip.active {
-    background: var(--ink);
-    color: var(--parchment);
-    border-color: var(--ink);
-  }
+    .disclosure-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
 
-  /* Case study grid */
-  section.cases {
-    padding: clamp(3rem, 6vw, 5rem) var(--gutter);
-  }
-  .cases-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: clamp(2rem, 4vw, 3rem);
-    max-width: 1100px;
-    margin: 0 auto;
-  }
+    .disclosure-mark {
+      font-family: 'Fraunces', serif;
+      font-size: 3rem;
+      color: var(--bronze);
+      line-height: 1;
+    }
 
-  /* Individual case study card — designed like a field record */
-  .case {
-    background: var(--parchment);
-    border: 1px solid rgba(15,17,21,0.12);
-    padding: clamp(2rem, 4vw, 3.5rem);
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: clamp(2rem, 4vw, 3rem);
-    position: relative;
-    transition: border-color 0.3s;
-  }
-  .case:hover { border-color: var(--bronze); }
+    .disclosure-text {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 300;
+      font-size: 1.05rem;
+      line-height: 1.65;
+      color: var(--ink-soft);
+    }
 
-  /* Left column — meta and identifying details */
-  .case-meta {
-    border-right: 1px solid rgba(15,17,21,0.1);
-    padding-right: clamp(1rem, 3vw, 2rem);
-  }
-  .case-label {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--bronze);
-    margin-bottom: 1rem;
-  }
-  .case-id {
-    font-family: var(--font-mono);
-    font-size: 0.78rem;
-    color: var(--ink-soft);
-    margin-bottom: 1.5rem;
-    letter-spacing: 0.05em;
-  }
-  .case-meta dl {
-    display: grid;
-    grid-template-columns: auto;
-    gap: 1.25rem;
-  }
-  .case-meta dt {
-    font-family: var(--font-mono);
-    font-size: 0.68rem;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--bronze);
-    margin-bottom: 0.3rem;
-  }
-  .case-meta dd {
-    font-size: 0.95rem;
-    line-height: 1.5;
-    color: var(--ink-soft);
-  }
-  .case-pillars {
-    margin-top: 1.5rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid rgba(15,17,21,0.1);
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-  }
-  .case-pillar-tag {
-    font-family: var(--font-mono);
-    font-size: 0.65rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    background: var(--ink);
-    color: var(--bronze);
-    padding: 0.35rem 0.75rem;
-  }
+    .disclosure-text strong {
+      font-style: normal;
+      font-weight: 500;
+      color: var(--ink);
+    }
 
-  /* Right column — the narrative */
-  .case-body h3 {
-    font-family: var(--font-display);
-    font-weight: 300;
-    font-size: clamp(1.65rem, 2.5vw, 2.1rem);
-    line-height: 1.15;
-    letter-spacing: -0.02em;
-    margin-bottom: 1rem;
-  }
-  .case-body h3 em { font-style: italic; color: var(--bronze-deep); }
+    /* Filter chips */
+    section.filter-bar {
+      padding: 2rem var(--gutter);
+      border-bottom: 1px solid rgba(15, 17, 21, 0.08);
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
 
-  .case-section {
-    margin-top: 2rem;
-  }
-  .case-section:first-of-type { margin-top: 1.5rem; }
-  .case-section h4 {
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--bronze);
-    margin-bottom: 0.75rem;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-  .case-section h4::before {
-    content: '';
-    width: 16px;
-    height: 1px;
-    background: var(--bronze);
-  }
-  .case-section p {
-    font-size: 1rem;
-    line-height: 1.75;
-    color: var(--ink-soft);
-  }
-  .case-section ul {
-    list-style: none;
-    margin-top: 0.5rem;
-  }
-  .case-section ul li {
-    font-size: 0.95rem;
-    line-height: 1.65;
-    color: var(--ink-soft);
-    padding: 0.4rem 0 0.4rem 1.5rem;
-    position: relative;
-  }
-  .case-section ul li::before {
-    content: '※';
-    color: var(--bronze);
-    position: absolute;
-    left: 0;
-    top: 0.4rem;
-    font-family: 'Fraunces', serif;
-  }
+    .filter-label {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--bronze);
+    }
 
-  /* Outcome block — the most visible result */
-  .case-outcome {
-    margin-top: 2rem;
-    padding: 1.25rem 1.5rem;
-    background: var(--ink);
-    color: var(--parchment);
-  }
-  .case-outcome .label {
-    font-family: var(--font-mono);
-    font-size: 0.68rem;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--bronze);
-    margin-bottom: 0.5rem;
-  }
-  .case-outcome .figure {
-    font-family: var(--font-display);
-    font-weight: 300;
-    font-size: clamp(1.4rem, 2.2vw, 1.85rem);
-    line-height: 1.25;
-    letter-spacing: -0.01em;
-  }
-  .case-outcome .figure em {
-    font-style: italic;
-    color: var(--bronze);
-  }
+    .filter-chips {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
 
-  /* Testimonial slot — for when one exists */
-  .case-testimonial {
-    margin-top: 2rem;
-    padding: 1.25rem 0 1.25rem 1.5rem;
-    border-left: 2px solid var(--bronze);
-    font-family: var(--font-display);
-    font-style: italic;
-    font-weight: 300;
-    font-size: 1.1rem;
-    line-height: 1.5;
-    color: var(--bronze-deep);
-  }
-  .case-testimonial .attr {
-    font-family: var(--font-mono);
-    font-style: normal;
-    font-size: 0.7rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--bronze);
-    display: block;
-    margin-top: 0.75rem;
-  }
+    .chip {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.5rem 1rem;
+      border: 1px solid rgba(15, 17, 21, 0.2);
+      color: var(--ink);
+      background: transparent;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
 
-  /* When a testimonial isn't available */
-  .case-testimonial.placeholder {
-    color: rgba(15,17,21,0.4);
-    font-style: italic;
-  }
+    .chip:hover {
+      border-color: var(--bronze);
+      color: var(--bronze-deep);
+    }
 
-  /* Empty-state / "more coming" card */
-  .case-coming {
-    background: transparent;
-    border: 1px dashed var(--bronze);
-    padding: clamp(3rem, 5vw, 4rem);
-    text-align: center;
-  }
-  .case-coming .label {
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--bronze);
-    margin-bottom: 1rem;
-  }
-  .case-coming h3 {
-    font-family: var(--font-display);
-    font-weight: 300;
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    max-width: 28ch;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .case-coming p {
-    font-size: 1rem;
-    line-height: 1.7;
-    color: var(--ink-soft);
-    max-width: 52ch;
-    margin: 0 auto;
-  }
+    .chip.active {
+      background: var(--ink);
+      color: var(--parchment);
+      border-color: var(--ink);
+    }
 
-  /* Closer */
-  section.closer-min {
-    padding: clamp(5rem, 8vw, 7rem) var(--gutter);
-    border-top: 1px solid rgba(15,17,21,0.08);
-    background: var(--parchment-deep);
-    text-align: center;
-  }
-  section.closer-min .display-lg { margin: 0 auto 2rem; max-width: 26ch; }
-  section.closer-min .deck { margin: 0 auto 2.5rem; max-width: 52ch; }
-  section.closer-min .cta-row {
-    display: flex;
-    gap: 1.5rem;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
+    /* Case study grid */
+    section.cases {
+      padding: clamp(3rem, 6vw, 5rem) var(--gutter);
+    }
 
-  @media (max-width: 900px) {
-    .case {
+    .cases-grid {
+      display: grid;
       grid-template-columns: 1fr;
+      gap: clamp(2rem, 4vw, 3rem);
+      max-width: 1100px;
+      margin: 0 auto;
     }
+
+    /* Individual case study card — designed like a field record */
+    .case {
+      background: var(--parchment);
+      border: 1px solid rgba(15, 17, 21, 0.12);
+      padding: clamp(2rem, 4vw, 3.5rem);
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: clamp(2rem, 4vw, 3rem);
+      position: relative;
+      transition: border-color 0.3s;
+    }
+
+    .case:hover {
+      border-color: var(--bronze);
+    }
+
+    /* Left column — meta and identifying details */
     .case-meta {
-      border-right: none;
-      padding-right: 0;
-      padding-bottom: 1.5rem;
-      border-bottom: 1px solid rgba(15,17,21,0.1);
+      border-right: 1px solid rgba(15, 17, 21, 0.1);
+      padding-right: clamp(1rem, 3vw, 2rem);
     }
-    .disclosure-inner { grid-template-columns: 1fr; gap: 1rem; text-align: center; }
-  }
-</style>
+
+    .case-label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--bronze);
+      margin-bottom: 1rem;
+    }
+
+    .case-id {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--ink-soft);
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.05em;
+    }
+
+    .case-meta dl {
+      display: grid;
+      grid-template-columns: auto;
+      gap: 1.25rem;
+    }
+
+    .case-meta dt {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--bronze);
+      margin-bottom: 0.3rem;
+    }
+
+    .case-meta dd {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: var(--ink-soft);
+    }
+
+    .case-pillars {
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(15, 17, 21, 0.1);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .case-pillar-tag {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      background: var(--ink);
+      color: var(--bronze);
+      padding: 0.35rem 0.75rem;
+    }
+
+    /* Right column — the narrative */
+    .case-body h3 {
+      font-family: var(--font-display);
+      font-weight: 300;
+      font-size: clamp(1.65rem, 2.5vw, 2.1rem);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+
+    .case-body h3 em {
+      font-style: italic;
+      color: var(--bronze-deep);
+    }
+
+    .case-section {
+      margin-top: 2rem;
+    }
+
+    .case-section:first-of-type {
+      margin-top: 1.5rem;
+    }
+
+    .case-section h4 {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--bronze);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .case-section h4::before {
+      content: '';
+      width: 16px;
+      height: 1px;
+      background: var(--bronze);
+    }
+
+    .case-section p {
+      font-size: 1rem;
+      line-height: 1.75;
+      color: var(--ink-soft);
+    }
+
+    .case-section ul {
+      list-style: none;
+      margin-top: 0.5rem;
+    }
+
+    .case-section ul li {
+      font-size: 0.95rem;
+      line-height: 1.65;
+      color: var(--ink-soft);
+      padding: 0.4rem 0 0.4rem 1.5rem;
+      position: relative;
+    }
+
+    .case-section ul li::before {
+      content: '※';
+      color: var(--bronze);
+      position: absolute;
+      left: 0;
+      top: 0.4rem;
+      font-family: 'Fraunces', serif;
+    }
+
+    /* Outcome block — the most visible result */
+    .case-outcome {
+      margin-top: 2rem;
+      padding: 1.25rem 1.5rem;
+      background: var(--ink);
+      color: var(--parchment);
+    }
+
+    .case-outcome .label {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--bronze);
+      margin-bottom: 0.5rem;
+    }
+
+    .case-outcome .figure {
+      font-family: var(--font-display);
+      font-weight: 300;
+      font-size: clamp(1.4rem, 2.2vw, 1.85rem);
+      line-height: 1.25;
+      letter-spacing: -0.01em;
+    }
+
+    .case-outcome .figure em {
+      font-style: italic;
+      color: var(--bronze);
+    }
+
+    /* Testimonial slot — for when one exists */
+    .case-testimonial {
+      margin-top: 2rem;
+      padding: 1.25rem 0 1.25rem 1.5rem;
+      border-left: 2px solid var(--bronze);
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 300;
+      font-size: 1.1rem;
+      line-height: 1.5;
+      color: var(--bronze-deep);
+    }
+
+    .case-testimonial .attr {
+      font-family: var(--font-mono);
+      font-style: normal;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--bronze);
+      display: block;
+      margin-top: 0.75rem;
+    }
+
+    /* When a testimonial isn't available */
+    .case-testimonial.placeholder {
+      color: rgba(15, 17, 21, 0.4);
+      font-style: italic;
+    }
+
+    /* Engagement-parallel — the commercial framing line for the in-production systems */
+    .case-engagement-parallel {
+      margin-top: 2rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid rgba(139, 111, 63, 0.25);
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      line-height: 1.55;
+      color: var(--bronze-deep);
+    }
+
+    .case-engagement-parallel em {
+      font-style: italic;
+    }
+
+    /* Empty-state / "more coming" card */
+    .case-coming {
+      background: transparent;
+      border: 1px dashed var(--bronze);
+      padding: clamp(3rem, 5vw, 4rem);
+      text-align: center;
+    }
+
+    .case-coming .label {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--bronze);
+      margin-bottom: 1rem;
+    }
+
+    .case-coming h3 {
+      font-family: var(--font-display);
+      font-weight: 300;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      max-width: 28ch;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .case-coming p {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--ink-soft);
+      max-width: 52ch;
+      margin: 0 auto;
+    }
+
+    /* Closer */
+    section.closer-min {
+      padding: clamp(5rem, 8vw, 7rem) var(--gutter);
+      border-top: 1px solid rgba(15, 17, 21, 0.08);
+      background: var(--parchment-deep);
+      text-align: center;
+    }
+
+    section.closer-min .display-lg {
+      margin: 0 auto 2rem;
+      max-width: 26ch;
+    }
+
+    section.closer-min .deck {
+      margin: 0 auto 2.5rem;
+      max-width: 52ch;
+    }
+
+    section.closer-min .cta-row {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 900px) {
+      .case {
+        grid-template-columns: 1fr;
+      }
+
+      .case-meta {
+        border-right: none;
+        padding-right: 0;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid rgba(15, 17, 21, 0.1);
+      }
+
+      .disclosure-inner {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        text-align: center;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<header class="site">
-  <div class="wordmark">
-    <a href="index.html">Norrœna<span class="sub">Solutions</span></a>
-  </div>
-  <nav class="primary">
-    <a href="practice.html">Practice</a>
-    <a href="case-studies.html" aria-current="page">Case studies</a>
-    <a href="founder.html">Founder</a>
-    <a href="contact.html">Contact</a>
-    <a href="audit.html" class="cta">Begin with an audit</a>
-  </nav>
-</header>
-
-<main>
-
-  <!-- Page hero -->
-  <section class="page-hero">
-    <div class="eyebrow reveal d1">Case studies</div>
-    <h1 class="reveal d2">Selected work,<br><em>sanitized.</em></h1>
-    <p class="deck reveal d3">
-      A field record of representative engagements — situations encountered,
-      interventions delivered, outcomes measured. Names, industries, and
-      specific identifiers are anonymized; numbers are real or rounded;
-      the work is exactly what happened.
-    </p>
-  </section>
-
-  <!-- The honest disclosure -->
-  <section class="disclosure scroll-reveal">
-    <div class="disclosure-inner">
-      <div class="disclosure-mark" aria-hidden="true">※</div>
-      <p class="disclosure-text">
-        <strong>A note on confidentiality.</strong> The work shown here
-        was performed under confidentiality. Client names, industries,
-        and identifying details have been changed or removed. Approaches,
-        architectures, and outcomes are described accurately — because that's
-        what's useful to you, and what we'd want from a firm we were
-        considering hiring.
-      </p>
+  <header class="site">
+    <div class="wordmark">
+      <a href="index.html">Norrœna<span class="sub">Solutions</span></a>
     </div>
-  </section>
-
-  <!-- Filter bar -->
-  <section class="filter-bar scroll-reveal">
-    <span class="filter-label">Filter by pillar:</span>
-    <div class="filter-chips">
-      <button class="chip active" data-filter="all">All</button>
-      <button class="chip" data-filter="bifrost">Bifröst</button>
-      <button class="chip" data-filter="draupnir">Draupnir</button>
-      <button class="chip" data-filter="mimir">Mímir</button>
-      <button class="chip" data-filter="run">Rún</button>
-    </div>
-  </section>
-
-  <!-- Case studies -->
-  <section class="cases">
-    <div class="cases-grid">
-
-      <!-- ============ CASE 01 ============ -->
-      <article class="case scroll-reveal" data-pillars="run bifrost">
-        <aside class="case-meta">
-          <div class="case-label">Field record</div>
-          <div class="case-id">№ 001 · 2025</div>
-          <dl>
-            <dt>Client profile</dt>
-            <dd>Third-party administrator · ~350 employees · 31+ states · fully remote</dd>
-
-            <dt>Engagement type</dt>
-            <dd>Multi-state compliance audit, followed by phased platform build-out</dd>
-
-            <dt>Duration</dt>
-            <dd>Audit: 3 weeks · Phase 1 build: 4 months</dd>
-          </dl>
-          <div class="case-pillars">
-            <span class="case-pillar-tag">Rún</span>
-            <span class="case-pillar-tag">Bifröst</span>
-          </div>
-        </aside>
-
-        <div class="case-body">
-          <h3>Multi-state HR for a fully-remote workforce, <em>rebuilt from the inside.</em></h3>
-
-          <div class="case-section">
-            <h4>Situation</h4>
-            <p>
-              A fully-remote workforce had expanded into more than thirty states with
-              a stack of HR tools built for a smaller, simpler company. Multi-state
-              leave accruals were being reconciled by hand each pay period. Compliance
-              posting obligations were tracked across two spreadsheets and a shared
-              calendar. The HR function had grown into a one-person bottleneck holding
-              the firm right with the law in jurisdictions it had never legally tested.
-            </p>
-          </div>
-
-          <div class="case-section">
-            <h4>Intervention</h4>
-            <ul>
-              <li>Structured audit of HR workflows across all operating states, surfacing 14 distinct exposure points ranked by severity</li>
-              <li>Phased implementation of a custom HR information system — payroll-adjacent, multi-state aware — replacing the manual reconciliation entirely</li>
-              <li>Migration of leave accrual logic into rule-based modules per state, with automated posting-obligation tracking</li>
-              <li>Reporting suite built to replace seven manual spreadsheets with five reconciled, refreshable reports</li>
-            </ul>
-          </div>
-
-          <div class="case-section">
-            <h4>Architecture choices worth noting</h4>
-            <p>
-              Multi-state leave logic was modeled as state-scoped rule sets rather
-              than hard-coded conditionals — making future state additions a configuration
-              change, not a code change. Compliance-relevant fields were tagged at
-              the schema layer so that audit trails are generated automatically.
-            </p>
-          </div>
-
-          <div class="case-outcome">
-            <div class="label">Outcome</div>
-            <div class="figure">
-              Reconciliation time reduced from <em>a full week per cycle</em>
-              to under an hour. Compliance exposure surface reduced by 14 of 14
-              identified findings, with audit-trail evidence available on demand.
-            </div>
-          </div>
-
-          <blockquote class="case-testimonial placeholder">
-            "Testimonial pending publication consent — available on request under NDA."
-          </blockquote>
-        </div>
-      </article>
-
-      <!-- ============ CASE 02 ============ -->
-      <article class="case scroll-reveal" data-pillars="draupnir">
-        <aside class="case-meta">
-          <div class="case-label">Field record</div>
-          <div class="case-id">№ 002 · 2025</div>
-          <dl>
-            <dt>Client profile</dt>
-            <dd>Professional services firm · ~60 employees · single-state, growing</dd>
-
-            <dt>Engagement type</dt>
-            <dd>Single-automation modular build</dd>
-
-            <dt>Duration</dt>
-            <dd>5 weeks, fixed fee</dd>
-          </dl>
-          <div class="case-pillars">
-            <span class="case-pillar-tag">Draupnir</span>
-          </div>
-        </aside>
-
-        <div class="case-body">
-          <h3>The onboarding workflow that <em>finally finished itself.</em></h3>
-
-          <div class="case-section">
-            <h4>Situation</h4>
-            <p>
-              A growing professional-services firm onboarded new hires through a
-              workflow held together by a checklist in a shared document, a calendar
-              reminder, and the institutional memory of one operations lead.
-              Roughly one in six onboardings missed a required step — an I-9 verification,
-              a benefits enrollment window, a system access request. The fix every
-              time was reactive: someone noticed, someone scrambled, someone apologized.
-            </p>
-          </div>
-
-          <div class="case-section">
-            <h4>Intervention</h4>
-            <ul>
-              <li>Single automation built end-to-end: trigger on new-hire record, branching logic per role, tracked across systems</li>
-              <li>Integration with the firm's existing document signing and benefits enrollment tools — no replacement, no migration</li>
-              <li>Failure notification path with a defined escalation rule so a stalled step surfaces within 24 hours</li>
-              <li>Written operating documentation handed off at close, plus a 30-day warranty window</li>
-            </ul>
-          </div>
-
-          <div class="case-outcome">
-            <div class="label">Outcome</div>
-            <div class="figure">
-              Onboarding completion rate moved from <em>~83% on first pass</em>
-              to <em>100% across the first 18 hires</em> following deployment.
-              Operations lead recovered an estimated 4–6 hours per hire.
-            </div>
-          </div>
-
-          <blockquote class="case-testimonial">
-            "The most useful thing about working with Michael is that the system
-            we ended up with was unmistakably ours — built around how our team
-            actually operates, not how a generic tool wanted us to operate."
-            <span class="attr">— Operations Lead, anonymized client</span>
-          </blockquote>
-        </div>
-      </article>
-
-      <!-- ============ CASE 03 ============ -->
-      <article class="case scroll-reveal" data-pillars="mimir">
-        <aside class="case-meta">
-          <div class="case-label">Field record</div>
-          <div class="case-id">№ 003 · 2025</div>
-          <dl>
-            <dt>Client profile</dt>
-            <dd>Mid-sized employer · ~180 employees · benefits-heavy plan design</dd>
-
-            <dt>Engagement type</dt>
-            <dd>Mímir-class knowledge assistant, scoped to internal documentation</dd>
-
-            <dt>Duration</dt>
-            <dd>6 weeks, fixed fee + ongoing retainer</dd>
-          </dl>
-          <div class="case-pillars">
-            <span class="case-pillar-tag">Mímir</span>
-          </div>
-        </aside>
-
-        <div class="case-body">
-          <h3>A benefits Q&amp;A that <em>cites its sources.</em></h3>
-
-          <div class="case-section">
-            <h4>Situation</h4>
-            <p>
-              A mid-sized employer with a complex benefits plan was answering the
-              same questions every open-enrollment cycle. HR fielded an estimated
-              two hundred individual questions over six weeks — most of them already
-              answered in the summary plan description, the FAQ, or the benefits
-              guide. The HR team had the documents. Employees had the questions.
-              The bridge between them was a Slack thread that nobody had time to maintain.
-            </p>
-          </div>
-
-          <div class="case-section">
-            <h4>Intervention</h4>
-            <ul>
-              <li>Scoped Mímir-class assistant built over the existing benefits corpus — SPD, FAQ, guide, three carrier documents</li>
-              <li>Every answer cited the specific document and section it came from, with a link to the source</li>
-              <li>Confidence thresholds calibrated to escalate to human HR when the model's grounded answer fell below tolerance</li>
-              <li>30-day evaluation period with an accuracy review against an agreed test set before sign-off</li>
-            </ul>
-          </div>
-
-          <div class="case-section">
-            <h4>What we deliberately did not do</h4>
-            <p>
-              The assistant was not given any access to individual employee records,
-              salary data, or PII. The corpus was static documentation only.
-              Personal-situation questions ("what does this mean for me?") were
-              routed to human HR by design.
-            </p>
-          </div>
-
-          <div class="case-outcome">
-            <div class="label">Outcome</div>
-            <div class="figure">
-              Open-enrollment Q&amp;A volume to HR dropped by <em>roughly 65%</em>
-              in the first cycle following deployment. HR's remaining workload
-              shifted to the harder, judgment-required questions — which was
-              the point.
-            </div>
-          </div>
-
-          <blockquote class="case-testimonial placeholder">
-            "Testimonial pending publication consent — available on request under NDA."
-          </blockquote>
-        </div>
-      </article>
-
-      <!-- ============ CASE 04 ============ -->
-      <article class="case scroll-reveal" data-pillars="run">
-        <aside class="case-meta">
-          <div class="case-label">Field record</div>
-          <div class="case-id">№ 004 · 2024</div>
-          <dl>
-            <dt>Client profile</dt>
-            <dd>Early-stage startup · ~45 employees · expanding into 12 states</dd>
-
-            <dt>Engagement type</dt>
-            <dd>Multi-state compliance audit, standalone</dd>
-
-            <dt>Duration</dt>
-            <dd>2 weeks, fixed fee</dd>
-          </dl>
-          <div class="case-pillars">
-            <span class="case-pillar-tag">Rún</span>
-          </div>
-        </aside>
-
-        <div class="case-body">
-          <h3>An audit that <em>stopped a hire</em> before it became a problem.</h3>
-
-          <div class="case-section">
-            <h4>Situation</h4>
-            <p>
-              An early-stage company was preparing to hire its first employees in
-              California, New York, and Washington — three states whose employment
-              law surface area is dramatically larger than the founder's home state.
-              Leadership was not sure what they didn't know, and the existing PEO
-              relationship had not flagged the obligations the upcoming hires would trigger.
-              They asked for a Rún audit before the offer letters went out.
-            </p>
-          </div>
-
-          <div class="case-section">
-            <h4>Intervention</h4>
-            <ul>
-              <li>Structured review of the proposed hire roster against state-by-state employment requirements</li>
-              <li>Mapping of policy gaps — handbook addenda, notice obligations, sick leave accruals, final-pay rules</li>
-              <li>Written findings report with severity rankings and a 30/60/90-day remediation sequence</li>
-              <li>Walkthrough session with leadership and the firm's outside counsel before any hire was finalized</li>
-            </ul>
-          </div>
-
-          <div class="case-outcome">
-            <div class="label">Outcome</div>
-            <div class="figure">
-              Eleven distinct compliance gaps identified before first hire.
-              Remediation completed in <em>five weeks</em>; first offers extended
-              with the firm's exposure documented and bounded.
-            </div>
-          </div>
-
-          <blockquote class="case-testimonial">
-            "Worth every dollar. We thought we needed a tool. What we actually
-            needed was someone to tell us what we didn't know — and to put it
-            in writing."
-            <span class="attr">— CEO, anonymized client</span>
-          </blockquote>
-        </div>
-      </article>
-
-      <!-- More-coming card -->
-      <div class="case-coming scroll-reveal">
-        <div class="label">More records pending</div>
-        <h3>The catalog grows with every engagement.</h3>
-        <p>
-          New field records are added as engagements close and consent for
-          publication is secured. If you'd like to discuss a case study
-          similar to your situation, or request access to a fuller version
-          under NDA, please get in touch.
-        </p>
-        <div style="margin-top: 2rem;">
-          <a href="contact.html" class="btn-secondary">Get in touch →</a>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Closer -->
-  <section class="closer-min scroll-reveal">
-    <div class="section-label" style="justify-content: center;">Recognize your situation in any of these?</div>
-    <h2 class="display-lg">The first step is <em>the same.</em></h2>
-    <p class="deck">
-      A Rún audit. Fixed fee. Written report. Honest findings.
-      Whatever happens next is a separate conversation.
-    </p>
-    <div class="cta-row">
-      <a href="audit.html" class="btn-primary">Request an audit <span class="arr">→</span></a>
-      <a href="practice.html" class="btn-secondary">See the practice</a>
-    </div>
-  </section>
-
-</main>
-
-<footer class="site">
-  <div class="footer-top">
-    <div class="footer-mark">
-      <div class="name">Norrœna Solutions</div>
-      <div class="tag">— the bridge between people and process —</div>
-    </div>
-    <div class="footer-links">
+    <nav class="primary">
       <a href="practice.html">Practice</a>
-      <a href="case-studies.html">Case studies</a>
+      <a href="case-studies.html" aria-current="page">Case studies</a>
       <a href="founder.html">Founder</a>
-      <a href="audit.html">Audit</a>
       <a href="contact.html">Contact</a>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span>© 2026 Norrœna Solutions, LLC · Highland, Utah</span>
-    <span>ᛒ ᛞ ᛗ ᚱ</span>
-  </div>
-</footer>
+      <a href="audit.html" class="cta">Begin with an audit</a>
+    </nav>
+  </header>
 
-<script src="assets/norroena.js"></script>
-<script>
-  // Filter-chip behavior — pure client-side, fully ornamental.
-  // Each .case has a data-pillars attribute listing applicable pillars.
-  (function () {
-    const chips = document.querySelectorAll('.chip');
-    const cases = document.querySelectorAll('.case');
-    chips.forEach(chip => {
-      chip.addEventListener('click', () => {
-        chips.forEach(c => c.classList.remove('active'));
-        chip.classList.add('active');
-        const filter = chip.dataset.filter;
-        cases.forEach(c => {
-          const pillars = (c.dataset.pillars || '').split(/\s+/);
-          if (filter === 'all' || pillars.includes(filter)) {
-            c.style.display = '';
-          } else {
-            c.style.display = 'none';
-          }
+  <main>
+
+    <!-- Page hero -->
+    <section class="page-hero">
+      <div class="eyebrow reveal d1">The work</div>
+      <h1 class="reveal d2">Selected systems,<br><em>in production.</em></h1>
+      <p class="deck reveal d3">
+        What I've built. Where I built it. Why it mattered.
+        A working portfolio of HR technology in active use — not a hypothetical,
+        not a pitch deck, not a mockup.
+      </p>
+    </section>
+
+    <!-- The honest disclosure -->
+    <section class="disclosure scroll-reveal">
+      <div class="disclosure-inner">
+        <div class="disclosure-mark" aria-hidden="true">§</div>
+        <p class="disclosure-text">
+          <strong>A note on what this is.</strong> Norrœna is new as a consultancy.
+          The capability is not. The systems below were built in my current
+          role as the sole HR specialist for a 350-employee firm operating
+          across 31+ states — each one in response to a real operational
+          problem, each one in production today. They're shown here not as
+          client engagements but as proof of practice: what custom HR technology
+          looks like when it's built by a practitioner who also writes the code.
+          Client engagements through Norrœna will be added as they conclude and
+          publication consent is granted.
+        </p>
+      </div>
+    </section>
+
+    <!-- Filter bar -->
+    <section class="filter-bar scroll-reveal">
+      <span class="filter-label">Filter by pillar:</span>
+      <div class="filter-chips">
+        <button class="chip active" data-filter="all">All</button>
+        <button class="chip" data-filter="bifrost">Bifröst</button>
+        <button class="chip" data-filter="draupnir">Draupnir</button>
+        <button class="chip" data-filter="mimir">Mímir</button>
+        <button class="chip" data-filter="run">Rún</button>
+      </div>
+    </section>
+
+    <!-- Case studies -->
+    <section class="cases">
+      <div class="cases-grid">
+
+        <!-- ============ SYSTEM 01 ============ -->
+        <article class="case scroll-reveal" data-pillars="bifrost mimir">
+          <aside class="case-meta">
+            <div class="case-label">System in production</div>
+            <div class="case-id">№ 01 · Recruiting</div>
+            <dl>
+              <dt>Built for</dt>
+              <dd>350-employee firm · 31+ states · fully remote</dd>
+
+              <dt>System type</dt>
+              <dd>Custom Applicant Tracking System with integrated AI resume analysis</dd>
+
+              <dt>Status</dt>
+              <dd>In production · serving HR, hiring managers, and applicants</dd>
+            </dl>
+            <div class="case-pillars">
+              <span class="case-pillar-tag">Bifröst</span>
+              <span class="case-pillar-tag">Mímir</span>
+            </div>
+          </aside>
+
+          <div class="case-body">
+            <h3>An ATS built for the way <em>hiring actually works.</em></h3>
+
+            <div class="case-section">
+              <h4>The problem</h4>
+              <p>
+                Generic ATS platforms optimize for the recruiter's clicks, not
+                the hiring team's reality. Hiring managers were managing scorecards
+                in side documents; candidates had no visibility into where they
+                stood; interview scheduling was a three-party email chain;
+                background checks, I-9s, and offer logistics lived in different
+                systems with no audit trail tying them together.
+              </p>
+            </div>
+
+            <div class="case-section">
+              <h4>What was built</h4>
+              <ul>
+                <li>End-to-end ATS spanning intake, screening, scheduling, evaluation, offer, and onboarding handoff —
+                  one system, one source of truth</li>
+                <li>Applicant-facing interface with step tracking, self-scheduling against hiring manager availability,
+                  and direct communication channels</li>
+                <li>AI-driven resume analysis comparing each application against the job description — flagging
+                  congruence, divergence, red flags, and suggested follow-up questions on job-relevant areas</li>
+                <li>Standardized hiring scorecards enforced across managers, producing defensible documentation for
+                  every hiring decision</li>
+                <li>Integrated background check, I-9 verification, and external recruiting platform connections, with
+                  movement of every applicant fully auditable</li>
+              </ul>
+            </div>
+
+            <div class="case-section">
+              <h4>Architecture choices worth noting</h4>
+              <p>
+                The system was designed around three audiences with different
+                needs — HR, hiring managers, and applicants — each receiving an
+                interface calibrated to what they actually do. AI resume analysis
+                was scoped to <em>augment</em> the human screening decision, not replace
+                it: every flag is explained, every comparison is grounded in the
+                job description, and the final call is always a person's.
+              </p>
+            </div>
+
+            <div class="case-outcome">
+              <div class="label">What changed</div>
+              <div class="figure">
+                Hiring moved from a multi-tool, manually-coordinated process
+                to a single auditable system. Applicants gained transparency
+                they had never had. Hiring managers stopped reinventing
+                evaluation criteria. HR gained a defensible record for
+                every decision.
+              </div>
+            </div>
+
+            <p class="case-engagement-parallel">
+              <em>In a Norrœna engagement, a system at this scope would be a
+                Bifröst Platform Implementation, typically $30,000–$60,000
+                depending on integration surface and AI components.</em>
+            </p>
+          </div>
+        </article>
+
+        <!-- ============ SYSTEM 02 ============ -->
+        <article class="case scroll-reveal" data-pillars="bifrost">
+          <aside class="case-meta">
+            <div class="case-label">System in production</div>
+            <div class="case-id">№ 02 · Core HR</div>
+            <dl>
+              <dt>Built for</dt>
+              <dd>350-employee firm · 31+ states · fully remote</dd>
+
+              <dt>System type</dt>
+              <dd>Full HR/Employee platform — the namesake of the practice</dd>
+
+              <dt>Status</dt>
+              <dd>In production · serving the entire workforce</dd>
+            </dl>
+            <div class="case-pillars">
+              <span class="case-pillar-tag">Bifröst</span>
+            </div>
+          </aside>
+
+          <div class="case-body">
+            <h3>The HR platform that <em>replaced the file cabinet — and the inbox.</em></h3>
+
+            <div class="case-section">
+              <h4>The problem</h4>
+              <p>
+                Employee information was spread across multiple drives, shared
+                folders, and email chains. Reporting required reconciling the
+                same data from three or four different files. Regular processes
+                — onboarding, status changes, role transitions, separations —
+                meant emails moving back and forth between HR, managers, and
+                employees, with the number of files and touch-points growing
+                exponentially as the company grew. Information went missing.
+                The same questions got asked twice.
+              </p>
+            </div>
+
+            <div class="case-section">
+              <h4>What was built</h4>
+              <ul>
+                <li>Unified HR/Employee platform consolidating personnel data, documents, and process state into a
+                  single auditable source</li>
+                <li>Self-service surfaces for employees — transparency into their own records, statuses, and pending
+                  actions</li>
+                <li>Structured workflows replacing email back-and-forth for routine HR processes</li>
+                <li>Uniform data schema eliminating the multi-file reconciliation that reporting had previously required
+                </li>
+                <li>Designed to grow with the firm — adding states, roles, or new processes is a configuration change,
+                  not a rebuild</li>
+              </ul>
+            </div>
+
+            <div class="case-section">
+              <h4>Architecture choices worth noting</h4>
+              <p>
+                The system was deliberately built to be <em>transparent to employees</em>,
+                not just useful to HR. Employees can see what HR sees about them —
+                which produces better data, fewer questions, and a workforce that
+                trusts the system because nothing is hidden in it. Compliance and
+                audit-trail requirements were treated as first-class schema concerns,
+                not bolted on later.
+              </p>
+            </div>
+
+            <div class="case-outcome">
+              <div class="label">What changed</div>
+              <div class="figure">
+                The exponential growth in files, drives, and email chains
+                stopped. Reporting that previously required cross-referencing
+                multiple files became a single query. Employees gained
+                visibility they had never had. HR gained operational headroom
+                to do the work that actually requires judgment.
+              </div>
+            </div>
+
+            <p class="case-engagement-parallel">
+              <em>In a Norrœna engagement, this is the flagship Bifröst Platform
+                Implementation, typically $30,000–$60,000+ depending on scope.
+                It can also be approached modularly — Draupnir-class builds first,
+                with the unified platform emerging as the modules accrete.</em>
+            </p>
+          </div>
+        </article>
+
+        <!-- ============ SYSTEM 03 ============ -->
+        <article class="case scroll-reveal" data-pillars="bifrost run">
+          <aside class="case-meta">
+            <div class="case-label">System in production</div>
+            <div class="case-id">№ 03 · Leave management</div>
+            <dl>
+              <dt>Built for</dt>
+              <dd>350-employee firm · 31+ states · fully remote</dd>
+
+              <dt>System type</dt>
+              <dd>Modern FMLA tracking system, designed for three audiences</dd>
+
+              <dt>Status</dt>
+              <dd>In production · serving employees, leads, and HR/leadership</dd>
+            </dl>
+            <div class="case-pillars">
+              <span class="case-pillar-tag">Bifröst</span>
+              <span class="case-pillar-tag">Rún</span>
+            </div>
+          </aside>
+
+          <div class="case-body">
+            <h3>FMLA tracking that <em>works for everyone in the conversation.</em></h3>
+
+            <div class="case-section">
+              <h4>The problem</h4>
+              <p>
+                FMLA tracking sits at the intersection of regulatory exposure,
+                employee dignity, and operational coordination — and most
+                employers treat it as a paperwork problem to solve with a
+                spreadsheet. The result is opaque to employees, frustrating
+                for leads who need to plan coverage, and a compliance liability
+                for HR. The information is the same; the people who need to see
+                it have different needs.
+              </p>
+            </div>
+
+            <div class="case-section">
+              <h4>What was built</h4>
+              <ul>
+                <li>FMLA tracking system with three distinct interfaces — one for the employee on leave, one for their
+                  lead, one for HR and leadership</li>
+                <li>Eligibility, certification, and intermittent-leave tracking handled in-system, with documentation
+                  and audit trail tied to each leave instance</li>
+                <li>Status visibility calibrated to each audience — employees see their own leave standing; leads see
+                  what they need to plan coverage; HR sees the compliance picture</li>
+                <li>Designed to handle multi-state variation in leave law, with state-specific overlays where state
+                  benefits exceed federal FMLA</li>
+              </ul>
+            </div>
+
+            <div class="case-section">
+              <h4>Architecture choices worth noting</h4>
+              <p>
+                Three-audience design isn't decorative — it's the entire point.
+                Most leave systems are built for HR to administer, and then bolt on
+                partial visibility for employees and managers. This one was
+                designed from the start around the question <em>"what does each
+                  person in this process actually need to see and do?"</em> The
+                compliance posture is a property of the system, not a separate
+                checklist HR maintains.
+              </p>
+            </div>
+
+            <div class="case-outcome">
+              <div class="label">What changed</div>
+              <div class="figure">
+                FMLA shifted from a paperwork burden to a tracked process.
+                Employees gained dignity through transparency into their own
+                standing. Leads gained planning information they had never had.
+                HR gained a defensible compliance posture without additional manual work.
+              </div>
+            </div>
+
+            <p class="case-engagement-parallel">
+              <em>In a Norrœna engagement, a bounded-scope platform like this
+                is typically a Bifröst Modular Build at $15,000–$30,000, or a
+                Draupnir Process Build at $8,000–$15,000 if scoped more narrowly
+                to a single audience or workflow.</em>
+            </p>
+          </div>
+        </article>
+
+        <!-- ============ SYSTEM 04 ============ -->
+        <article class="case scroll-reveal" data-pillars="draupnir">
+          <aside class="case-meta">
+            <div class="case-label">System in production</div>
+            <div class="case-id">№ 04 · Operations</div>
+            <dl>
+              <dt>Built for</dt>
+              <dd>350-employee firm · 31+ states · fully remote</dd>
+
+              <dt>System type</dt>
+              <dd>Reporting automation pipeline + structured HR request intake</dd>
+
+              <dt>Status</dt>
+              <dd>In production · two related Draupnir-class systems</dd>
+            </dl>
+            <div class="case-pillars">
+              <span class="case-pillar-tag">Draupnir</span>
+            </div>
+          </aside>
+
+          <div class="case-body">
+            <h3>The work that doesn't get a dashboard, but <em>saves the most time.</em></h3>
+
+            <div class="case-section">
+              <h4>The problem</h4>
+              <p>
+                Two operational patterns were quietly consuming the HR function's
+                week. <em>First:</em> reports that the HRIS ecosystem didn't natively
+                produce — reports requiring data from multiple sources, cleaned,
+                cross-referenced, and assembled by hand each cycle, then distributed
+                to the right stakeholders. <em>Second:</em> HR requests arriving by
+                email, missing the information needed to act on them, generating a
+                second round of email to gather it, then a third to confirm, then a
+                fourth when the wrong person was looped in.
+              </p>
+            </div>
+
+            <div class="case-section">
+              <h4>What was built</h4>
+              <ul>
+                <li>Reporting pipeline producing reports the HRIS couldn't natively generate — multi-source data
+                  assembly, cleaning, and reconciliation handled automatically, with refreshable scheduled distribution
+                </li>
+                <li>Structured HR request system enforcing complete-information intake — every event type captures
+                  what's needed up-front, including required approvals and routing</li>
+                <li>Audit trail and direct-communication threads attached to each request, replacing the email chain
+                  entirely</li>
+                <li>Both systems were designed to be modular and additive — new report types or request types can be
+                  added without rebuilding the system</li>
+              </ul>
+            </div>
+
+            <div class="case-section">
+              <h4>Architecture choices worth noting</h4>
+              <p>
+                The HR request system isn't a ticketing tool. It's a structured
+                intake layer that solves the actual problem — <em>requests arriving
+                  without the information needed to act on them.</em> By enforcing the
+                right schema at the moment of intake, the system eliminates the
+                follow-up rounds that previously consumed the most time. The
+                reporting pipeline applies the same principle to data: define the
+                shape once, source it correctly, and let the report be produced as
+                a consequence of the data being right.
+              </p>
+            </div>
+
+            <div class="case-outcome">
+              <div class="label">What changed</div>
+              <div class="figure">
+                The category of work that consumed the most HR time — manual
+                reporting and email back-and-forth on routine requests —
+                became automated and structured. Time was reclaimed for the
+                work that requires judgment. Accuracy improved because the
+                data was right in the first place, not corrected after the fact.
+              </div>
+            </div>
+
+            <p class="case-engagement-parallel">
+              <em>In a Norrœna engagement, these are Draupnir Process Builds —
+                typically $5,000–$15,000 per workflow, scoped sharply, delivered
+                in 3–8 weeks, and designed to compound. Each one makes the next
+                one cheaper.</em>
+            </p>
+          </div>
+        </article>
+
+        <!-- More-coming card -->
+        <div class="case-coming scroll-reveal">
+          <div class="label">Client engagements pending</div>
+          <h3>This catalog will grow.</h3>
+          <p>
+            The systems above are what's been built. Client engagements through
+            Norrœna will be added as they conclude and publication consent is
+            secured. If you'd like to discuss work similar to your situation —
+            or see a fuller technical walkthrough of any of the systems above
+            under NDA — please get in touch.
+          </p>
+          <div style="margin-top: 2rem;">
+            <a href="contact.html" class="btn-secondary">Get in touch →</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Closer -->
+    <section class="closer-min scroll-reveal">
+      <div class="section-label" style="justify-content: center;">Recognize your situation in any of these?</div>
+      <h2 class="display-lg">The first step is <em>the same.</em></h2>
+      <p class="deck">
+        An HR Operations Audit. Fixed fee. Written report. Honest findings.
+        Whatever happens next is a separate conversation.
+      </p>
+      <div class="cta-row">
+        <a href="audit.html" class="btn-primary">Request an audit <span class="arr">→</span></a>
+        <a href="practice.html" class="btn-secondary">See the practice</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site">
+    <div class="footer-top">
+      <div class="footer-mark">
+        <div class="name">Norrœna Solutions</div>
+        <div class="tag">— the bridge between people and process —</div>
+      </div>
+      <div class="footer-links">
+        <a href="practice.html">Practice</a>
+        <a href="case-studies.html">Case studies</a>
+        <a href="founder.html">Founder</a>
+        <a href="audit.html">Audit</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Norrœna Solutions, LLC · Highland, Utah</span>
+      <span>ᛒ ᛞ ᛗ ᚱ</span>
+    </div>
+  </footer>
+
+  <script src="assets/norroena.js"></script>
+  <script>
+    // Filter-chip behavior — pure client-side, fully ornamental.
+    // Each .case has a data-pillars attribute listing applicable pillars.
+    (function () {
+      const chips = document.querySelectorAll('.chip');
+      const cases = document.querySelectorAll('.case');
+      chips.forEach(chip => {
+        chip.addEventListener('click', () => {
+          chips.forEach(c => c.classList.remove('active'));
+          chip.classList.add('active');
+          const filter = chip.dataset.filter;
+          cases.forEach(c => {
+            const pillars = (c.dataset.pillars || '').split(/\s+/);
+            if (filter === 'all' || pillars.includes(filter)) {
+              c.style.display = '';
+            } else {
+              c.style.display = 'none';
+            }
+          });
         });
       });
-    });
-  })();
-</script>
+    })();
+  </script>
 </body>
+
 </html>
