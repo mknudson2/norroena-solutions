@@ -2,7 +2,7 @@
 
 > The bridge between people and process.
 
-The marketing website for [Norrœna Solutions](https://norroena.com), a solo HR-technology consultancy founded by Michael Knudson. Custom HR technology, automation, and AI — built by a practitioner who understands both the compliance requirement and the code.
+The marketing website for [Norrœna Solutions](https://norroenasolutions.com), a solo HR-technology consultancy founded by Michael Knudson. Custom HR technology, automation, and AI — built by a practitioner who understands both the compliance requirement and the code.
 
 ---
 
@@ -52,7 +52,7 @@ The Norrœna practice is organized into four interlocking domains, each authenti
 - **Bifröst** (Platforms) — full HR information & management suite
 - **Draupnir** (Processes) — modular automations, custom reports, integrations
 - **Mímir** (Assistants) — AI built on your own documentation
-- **Rún** (Counsel) — audits and advisory, including the lead wedge offer
+- **Rún** (Counsel) — audits and advisory, including the lead HR Operations Audit
 
 See `docs/DESIGN_CANON.md` for the full system.
 
